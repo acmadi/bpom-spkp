@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td rowspan="2" width="10%" align="center"><img src="<?php echo base_url()?>public/images/save.png"></td>
-			<td>File: {filename}</td>
+			<td>Nama File: {filename}</td>
 		</tr>
 		<tr>
 			<td>Ukuran: {filesize} KB</td>
