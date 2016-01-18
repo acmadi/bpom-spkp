@@ -1,0 +1,51 @@
+.ac_input {
+	border: 1px solid #707070;
+}
+.ac_results {
+	font-family : Verdana, Tahoma, Sans;
+	font-size: 11px;
+	padding: 1px;
+	border: 1px solid #707070;
+	background: #FFFCCF;
+	color:#333333;
+	overflow: hidden;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results iframe {
+	display:none;/*sorry for IE5*/
+	display/**/:block;/*sorry for IE5*/
+	position:absolute;
+	top:0;
+	left:2px;
+	z-index:-1;
+	filter:mask();
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: pointer;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
+
+.ac_results li u{
+	color:red;
+}
+
+.ac_loading {
+	background : url('indicator.gif') right center no-repeat;
+}
+.ac_over {
+	background:#DDDDDD;
+	color: #000000;
+}

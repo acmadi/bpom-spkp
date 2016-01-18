@@ -1,0 +1,102 @@
+
+/*** ESSENTIAL STYLES ***/
+.menu-14, .menu-14 * {
+	margin:			0px;
+	padding:		0;
+	list-style:		none;
+}
+.menu-14 {
+	line-height:	1;
+}
+.menu-14 ul {
+	position:		absolute;
+	top:			-999em;
+	width:			20em; /* left offset of submenus need to match (see below) */
+}
+.menu-14 ul li {
+	width:			100%;
+	
+}
+.menu-14 li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+	
+}
+.menu-14 li {
+	height:25px;
+	float:			left;
+	position:		relative;
+}
+.menu-14 a {
+	display:		block;	
+	position:		relative;
+}
+.menu-14 li:hover ul,
+.menu-14 li.sfHover ul {
+	left:			-55;
+	top:			2.2em; /* match top ul list item height */
+	z-index:		999;
+}
+ul.menu-14 li:hover li ul,
+ul.menu-14 li.sfHover li ul {
+	top:			-999em;
+}
+ul.menu-14 li li:hover ul,
+ul.menu-14 li li.sfHover ul {
+	left:			17em; /* match ul width */
+	top:			2.77em; /* match top ul list item height */
+}
+ul.menu-14 li li:hover li ul,
+ul.menu-14 li li.sfHover li ul {
+	top:			-999em;
+}
+ul.menu-14 li li li:hover ul,
+ul.menu-14 li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+.menu-14 {
+	height:			25px;
+	float:			left;
+	margin-bottom:	0em;
+	margin-left : .20em;
+	cursor:hand;
+}
+.menu-14 a {
+	padding: 		0;
+	text-decoration:none;
+}
+.menu-14 a, .menu-14 a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	margin: 0;
+	color:			#000;
+}
+.menu-14 li {
+}
+.menu-14 li li {
+	padding-top:		8px;
+	padding-left:		8px;
+	padding-right:		8px;
+	height:			20px;
+	width:			215px;
+	background:#DDDDDD;
+	border:1px solid #EFEFEF;
+	border-top:0;
+	font-weight:normal;
+}
+.menu-14 li li li {
+	width:			220px;
+	background:#DDDDDD;
+}
+.menu-14 li:hover {
+	color:white;
+	outline:		0;
+	
+}
+.menu-14 li.sfHover,
+.menu-14 a:focus, .menu-14 a:hover, .menu-14 a:active {
+	color:white;
+	background:#DDDDDD;
+	outline:		0;
+	
+}
