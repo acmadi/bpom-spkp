@@ -3,6 +3,7 @@ class Srikandi extends CI_Controller {
     
     function __construct(){
         parent::__construct();
+        $this->load->model('spkp_model');
         $this->load->model('srikandi_model');
         $this->load->helper('html');
         $this->load->add_package_path(APPPATH.'third_party/tbs_plugin_opentbs_1.8.0/');
@@ -24,17 +25,19 @@ class Srikandi extends CI_Controller {
 
 		$this->template->show($data,"home");
     }
+
     function detail($id=""){
         $this->authentication->verify('srikandi','show');
         
         $data = array();
-        $data['title'] = "Informasi dan Kajian";
+        $data['title'] = "Detail Informasi dan Kajian";
+		$data['konten'] = $this->spkp_model->get_content(5);
         
-		$data['add_permission']=$this->authentication->verify_check('srikandi','show');
-       	$data['detail_upload'] = $this->srikandi_model->getSubdit_detail($id);
-       	$data['data_detailupload'] = $this->srikandi_model->upload_detail($id);
-       	$data['id_srikandi'] = $id;
-        $data['content'] = $this->parser->parse("srikandi/detail",$data,true);
+		$data['add_permission']		= $this->authentication->verify_check('srikandi','show');
+       	$data['detail_upload'] 		= $this->srikandi_model->getSubdit_detail($id);
+       	$data['data_detailupload'] 	= $this->srikandi_model->upload_detail($id);
+       	$data['id_srikandi'] 		= $id;
+        $data['content'] 			= $this->parser->parse("srikandi/detail",$data,true);
 
 		$this->template->show($data,"home");
     }
@@ -76,6 +79,15 @@ class Srikandi extends CI_Controller {
 		exit;
 	}
 
+    function add_upload_rev($id_srikandi=0){
+        $this->authentication->verify('srikandi','add');
+
+		$data['action']="add";
+		$data['option_subdit']=$this->crud->option_subdit('','style="height:25px;padding:2px;margin: 0;"');
+
+		echo $this->parser->parse("srikandi/form_rev",$data,true);
+    }
+    
     function add_upload(){
         $this->authentication->verify('srikandi','add');
 		$data['action']="add";

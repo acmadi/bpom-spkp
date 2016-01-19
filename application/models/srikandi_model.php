@@ -51,18 +51,21 @@ class Srikandi_model extends CI_Model {
 
         $options = array('id_srikandi' => $id_subdit);
         $query = $this->db->query("SELECT @i:=@i+1 AS urut,  IF(a.update>1,FROM_UNIXTIME(a.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update,
-                a.id_srikandi AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori
+                a.id_srikandi AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori, d.ket as nama_subdit
                 FROM srikandi a 
                 JOIN app_users_list b ON a.uploader = b.id
+                JOIN `mas_subdit` d ON d.id_subdit = a.id_subdit
                 JOIN mas_srikandi_kategori c ON a.id_kategori = c.id_kategori where id_srikandi=$id_subdit");
         if ($query->num_rows() > 0){
-            $data = $query->result();
+            $data = $query->row_array();
+
         }
         $query->free_result();    
         return $data;
     }
+
     function upload_detail($id_subdit){
-        $where = '(id_srikandi="$id_subdit" OR id_srikandi_ref="$id_subdit")';
+        $where = '(id_srikandi="'.$id_subdit.'" OR id_srikandi_ref="'.$id_subdit.'")';
         $this->db->where($where);
         $this->db->select('*');     
         $this->db->order_by('id_srikandi','asc');
