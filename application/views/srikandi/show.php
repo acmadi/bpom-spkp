@@ -2,7 +2,7 @@
 	$(function(){
 	   $("#bar_informasidankajian").click();
 	   $('#btn_tambah_upload, #clearfilteringbutton_upload, #refreshdatabutton_upload, #printbutton_upload, #excelbutton_upload').jqxButton({ height: 25, theme: theme });
-
+	   
 	   var source = {
 			datatype: "json",
 			type	: "POST",
@@ -72,7 +72,7 @@
 				{ text: '#', align: 'center', filtertype: 'none', sortable: false, width: '7%', cellsrenderer: function (row) {
 				     var dataRecord = $("#jqxgrid_upload").jqxGrid('getrowdata', row);
 					 if({add_permission}==true || dataRecord.uploader=='<?php echo $this->session->userdata('id')?>'){
-						return "<div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);' title='Detail'><img border=0 src='<?php echo base_url(); ?>media/images/16_view.gif' onclick='edit_upload("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Edit'><img border=0 src='<?php echo base_url(); ?>public/images/edt.gif' onclick='edit_upload("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Download'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
+						return "<div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);' title='Detail'><img border=0 src='<?php echo base_url(); ?>media/images/16_view.gif' onclick='detail("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Edit'><img border=0 src='<?php echo base_url(); ?>public/images/edt.gif' onclick='edit_upload("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Download'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
 					 }else{
 						return "<div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
 					 }
@@ -262,6 +262,9 @@
 		if(s==1){
 			$("#jqxgrid_upload").jqxGrid('updatebounddata', 'cells');
 		}
+	}
+	function detail(id){
+		document.location.href="<?php echo base_url().'srikandi/detail';?>/" + id;
 	}
 </script>
 <div class="row-fluid">

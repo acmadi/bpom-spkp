@@ -24,7 +24,31 @@ class Srikandi extends CI_Controller {
 
 		$this->template->show($data,"home");
     }
-    
+    function detail($id=""){
+        $this->authentication->verify('srikandi','show');
+        
+        $data = array();
+        $data['title'] = "Informasi dan Kajian";
+        
+		$data['add_permission']=$this->authentication->verify_check('srikandi','show');
+       	$data['detail_upload'] = $this->srikandi_model->getSubdit_detail($id);
+       	$data['data_detailupload'] = $this->srikandi_model->upload_detail($id);
+       	$data['id_srikandi'] = $id;
+        $data['content'] = $this->parser->parse("srikandi/detail",$data,true);
+
+		$this->template->show($data,"home");
+    }
+
+    public function komentar(){
+            $this->form_validation->set_rules('komentar_detail', 'Komentar', 'required');
+            if ($this->form_validation->run() == FALSE){
+               echo'<div class="alert alert-danger">'.validation_errors().'</div>';
+               exit;
+            }
+            else{
+                $this->srikandi_model->komentar();
+            }
+  	}
     function filter(){
 		if($_POST) {
 			$this->session->set_userdata('searchsubdit', $this->input->post('subdit'));

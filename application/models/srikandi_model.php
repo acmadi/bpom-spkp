@@ -19,7 +19,18 @@ class Srikandi_model extends CI_Model {
        
        return $this->crud->jqxGrid($query);         
     }
-    
+
+    function komentar(){
+        $data['komentar'] = $this->input->post('komentar_detail');
+        $data['id_srikandi'] = $this->input->post('id_srikandi');
+        $data['ip'] = $_SERVER['REMOTE_ADDR'];
+       
+        if($this->db->insert('srikandi_comment', $data)){
+            return mysql_insert_id();
+        }else{
+            return false;
+        }
+    }
     function get_data_row($id){
         $query = $this->db->get_where('srikandi', array('id_srikandi'=>$id),1);
         $data = $query->row_array(); 
@@ -35,7 +46,29 @@ class Srikandi_model extends CI_Model {
 
         return $data;
     }
-    
+    function getSubdit_detail($id_subdit){
+        $data = array();
+
+        $options = array('id_srikandi' => $id_subdit);
+        $query = $this->db->query("SELECT @i:=@i+1 AS urut,  IF(a.update>1,FROM_UNIXTIME(a.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update,
+                a.id_srikandi AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori
+                FROM srikandi a 
+                JOIN app_users_list b ON a.uploader = b.id
+                JOIN mas_srikandi_kategori c ON a.id_kategori = c.id_kategori where id_srikandi=$id_subdit");
+        if ($query->num_rows() > 0){
+            $data = $query->result();
+        }
+        $query->free_result();    
+        return $data;
+    }
+    function upload_detail($id_subdit){
+        $where = '(id_srikandi="$id_subdit" OR id_srikandi_ref="$id_subdit")';
+        $this->db->where($where);
+        $this->db->select('*');     
+        $this->db->order_by('id_srikandi','asc');
+        $query = $this->db->get('srikandi'); 
+        return $query->result();    
+    }
 
     function getSubdit($id_subdit){
         $this->db->where('status','subdit');
@@ -50,7 +83,16 @@ class Srikandi_model extends CI_Model {
         return $data;
 
     }
-
+    function insert_upload_detail($id){
+        $data=array(
+            'kd_barang'=>$this->input->post('kd_barang'),
+            'nm_barang'=>$this->input->post('nm_barang'),
+            'stok'=>$this->input->post('stok'),
+            'harga'=>$this->input->post('harga'),
+        );
+        $this->model_app->insertData('srikandi',$data);
+        redirect("srikandi/detail/$id");
+    }
     function getKategoriParent($id_subdit,$kategori=0)
     {
         $sql = "SELECT * FROM mas_srikandi_kategori WHERE id_kategori_parent='0' AND id_subdit='".$id_subdit."'";
