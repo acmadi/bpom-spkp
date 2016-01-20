@@ -2,7 +2,7 @@
     $(document).ready(function(){
         
         $("input[type='text']").jqxInput({ theme: 'fresh', height: '22px', width: '90%'}); 
-        $("select").jqxInput({ height: '22px', width: '86%'}); 
+        
         $("textarea").jqxInput({  height: '100px', width: '90%'}); 
         
         $('#id_subdit').change(function(){
@@ -40,7 +40,7 @@
 			data.append('id_kategori_parent', $("[name='id_kategori_parent']").val());
 			data.append('id_kategori', $("[name='id_kategori']").val());
             data.append('prioritas', $("[name='prioritas']").val());
-
+            
 			$.ajax({ 
 				type: "POST",
 				cache: false,
@@ -138,9 +138,36 @@
 		<tr>
 			<td>
                 <table border="0" cellpadding="3" cellspacing="2" width='100%'>
-					<?php if($id_srikandi_ref==0) {
+					<?php 
+					if(isset($id_srikandi_ref)&&($id_srikandi_ref!=0)) {
 					?>
-						
+						<table>
+							<tr>
+								<td>Judul</td>
+								<td>:</td>
+								<td><?php echo $judul; ?></td>
+							</tr>
+							<tr>
+								<td>Subdit</td>
+								<td>:</td>
+								<td><?php echo $nama_subdit; ?></td>
+							</tr>
+							<tr>
+								<td>Kategori</td>
+								<td>:</td>
+								<td><?php echo $kategori; ?></td>
+							</tr>
+							<tr>
+								<td>Prioritas</td>
+								<td>:</td>
+								<td><?php echo $prioritas; ?></td>
+							</tr>
+					<input type="hidden" name="id_srikandi_ref" value="<?php echo $id_srikandi_ref; ?>">
+					 <input type="hidden" name="judul" value="<?php echo $judul; ?>">
+					 <input type="hidden" name="id_subdit" value="<?php echo $id_subdit; ?>">
+					 <input type="hidden" name="id_kategori_parent" value="<?php echo $id_kategori; ?>">
+					 <input type="hidden" name="id_kategori" value="<?php echo $id_kategori_parent; ?>">
+					 <input type="hidden" name="prioritas" value="<?php echo $prioritas; ?>">
 					<?php
 					}else{
 					?>	
@@ -208,7 +235,7 @@
 								/> *
 						</td>
 					</tr>
-					<?php if($id_srikandi_ref!=0) {
+					<?php if(isset($id_srikandi_ref)&&($id_srikandi_ref!=0)) {
 							echo "";
 					}else{
 					?>	

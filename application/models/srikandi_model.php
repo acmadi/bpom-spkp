@@ -50,7 +50,11 @@ class Srikandi_model extends CI_Model {
     }
 
     function get_data_row($id){
-        $query = $this->db->get_where('srikandi', array('id_srikandi'=>$id),1);
+        $this->db->where('id_srikandi',$id);
+        $this->db->select("srikandi.*,mas_subdit.ket as nama_subdit,mas_srikandi_kategori.nama as kategori,mas_srikandi_kategori.id_kategori_parent");
+        $this->db->join('mas_subdit', "srikandi.id_subdit = mas_subdit.id_subdit",'inner');
+        $this->db->join('mas_srikandi_kategori', "srikandi.id_kategori = mas_srikandi_kategori.id_kategori",'inner');
+        $query = $this->db->get('srikandi',1);
         $data = $query->row_array(); 
 
         $query = $this->db->get_where('mas_srikandi_kategori', array('id_kategori'=>$data['id_kategori']),1);
