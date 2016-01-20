@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
-        $("button,submit,reset").jqxInput({ theme: 'fresh', height: '28px', width: '100px'}); 
+        
         $("input[type='text']").jqxInput({ theme: 'fresh', height: '22px', width: '90%'}); 
         $("select").jqxInput({ height: '22px', width: '86%'}); 
         $("textarea").jqxInput({  height: '100px', width: '90%'}); 
@@ -128,16 +128,20 @@
 <div id="uploadloader" style='display:none;text-align:center'><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>uploading<br><br><br><br></div>
 <div id="uploaddiv" style="padding:5px;text-align:center">
 <form method="POST" id="frmData">
-	<?php if($action=="edit"){ ?><button type="button" name="btn_delete"> Delete Data </button> - <?php } ?>
-	<button type="button" name="btn_simpan"> Simpan </button>
-	<button type="reset"> Ulang </button>
-	<button type="button" onCLick="close_dialog_upload();"> Batal </button>
+	<?php if($action=="edit"){ ?><button type="button" class="btn btn-danger" name="btn_delete"> Delete Data </button> - <?php } ?>
+	<button type="button" class="btn btn-success" name="btn_simpan"> Simpan </button>
+	<button type="reset" class="btn btn-info"> Ulang </button>
+	<button type="button" onCLick="close_dialog_upload();" class="btn btn-warning"> Batal </button>
 	<br />
 	<br />
 	<table border="0" cellpadding="0" cellspacing="8" align="center" width='90%'>
 		<tr>
 			<td>
                 <table border="0" cellpadding="3" cellspacing="2" width='100%'>
+					<?php if($id_srikandi_ref!=0) {
+							echo "";
+					}else{
+					?>	
 					<tr>
 						<td width="30%">Judul </td>
 						<td>:</td>
@@ -148,7 +152,8 @@
 								}else{
 									echo  set_value('judul');
 								}
-								 ?>"/> *
+								 ?>"
+								/> *
 						</td>
 					</tr>
 					<tr>
@@ -157,7 +162,7 @@
 						<td>
 							{option_subdit} *
 						</td>
-					</tr>					
+					</tr>				
 					<tr valign="top">
 						<td rowspan="2">Kategori</td>
 						<td rowspan="2">:</td>
@@ -169,7 +174,8 @@
 						<td>
 							<select name="id_kategori" id="id_kategori" style="height:25px;padding:2px;margin: 0;"></select>
 						</td>
-					</tr>					
+					</tr>	
+					<?php } ?>				
                     <tr>
                         <td>Deskripsi </td>
                         <td>:</td>
@@ -192,9 +198,18 @@
 								}else{
 									echo  set_value('filename');
 								}
-								 ?>"/> *
+								
+
+								?>"
+								 
+
+								/> *
 						</td>
 					</tr>
+					<?php if($id_srikandi_ref!=0) {
+							echo "";
+					}else{
+					?>	
 					<tr>
 						<td>Prioritas</td>
 						<td>:</td>
@@ -207,6 +222,7 @@
 							</select>
 						</td>
 					</tr>
+					<?php } ?>
 				</table>
 			</td>
 		</tr>

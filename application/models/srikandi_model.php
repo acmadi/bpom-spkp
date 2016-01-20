@@ -23,6 +23,8 @@ class Srikandi_model extends CI_Model {
     function komentar(){
         $data['komentar'] = $this->input->post('komentar_detail');
         $data['id_srikandi'] = $this->input->post('id_srikandi');
+        $data['uploader'] = $this->session->userdata('id');
+        $data['update'] = time();
         $data['ip'] = $_SERVER['REMOTE_ADDR'];
        
         if($this->db->insert('srikandi_comment', $data)){
@@ -33,8 +35,12 @@ class Srikandi_model extends CI_Model {
     }
 
     function get_comment($id){
-        $query = $this->db->get_where('srikandi_comment', array('id_srikandi'=>$id));
-        $data = $query->result_array(); 
+        
+        $this->db->where('id_srikandi',$id);
+        $this->db->select("srikandi_comment.*,app_users_profile.username,app_users_profile.image");
+        $this->db->join('app_users_profile', "srikandi_comment.uploader = app_users_profile.id",'inner');
+        $query = $this->db->get('srikandi_comment');
+        $data = $query->result(); 
 
         return $data;
     }
@@ -59,7 +65,7 @@ class Srikandi_model extends CI_Model {
 
         $options = array('id_srikandi' => $id_subdit);
         $query = $this->db->query("SELECT @i:=@i+1 AS urut,  IF(a.update>1,FROM_UNIXTIME(a.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update,
-                a.id_srikandi AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori, d.ket as nama_subdit
+                a.id_srikandi AS id_file, a.judul, a.id_subdit,a.id_kategori, c.id_kategori_parent,a.prioritas,a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori, d.ket as nama_subdit
                 FROM srikandi a 
                 JOIN app_users_list b ON a.uploader = b.id
                 JOIN `mas_subdit` d ON d.id_subdit = a.id_subdit
@@ -94,16 +100,7 @@ class Srikandi_model extends CI_Model {
         return $data;
 
     }
-    function insert_upload_detail($id){
-        $data=array(
-            'kd_barang'=>$this->input->post('kd_barang'),
-            'nm_barang'=>$this->input->post('nm_barang'),
-            'stok'=>$this->input->post('stok'),
-            'harga'=>$this->input->post('harga'),
-        );
-        $this->model_app->insertData('srikandi',$data);
-        redirect("srikandi/detail/$id");
-    }
+    
     function getKategoriParent($id_subdit,$kategori=0)
     {
         $sql = "SELECT * FROM mas_srikandi_kategori WHERE id_kategori_parent='0' AND id_subdit='".$id_subdit."'";
@@ -147,7 +144,13 @@ class Srikandi_model extends CI_Model {
         $data['filename'] = $upload_data['file_name'];
         $data['filesize'] = $upload_data['file_size'];
         $data['ip'] = $_SERVER['REMOTE_ADDR'];
-       
+        $id_srikandi_ref = $this->input->post('id_srikandi_ref');
+        if(isset($id_srikandi_ref)){
+            $data['id_srikandi_ref'] = $id_srikandi_ref;
+        }else{
+            $data['id_srikandi_ref'] = '0';
+        }
+
         if($this->db->insert('srikandi', $data)){
 			return mysql_insert_id();
 		}else{

@@ -110,7 +110,7 @@ Upload oleh : <?php echo $detail_upload['username']?>, <?php echo date("d-m-Y H:
 	</div>
 	<div class="widget purple">
 		<div class="widget-title">
-			<h4><i class="icon-file"></i> Komentar </h4>
+			<h4><i class="icon-comment"></i> Komentar </h4>
 		</div>
 
 		<div class="widget-body">
@@ -167,4 +167,6 @@ $(document).ready(function (){
     }
     
 });
+
+
 </script>

@@ -37,6 +37,7 @@
 			data.append('id_kategori_parent', $("[name='id_kategori_parent']").val());
 			data.append('id_kategori', $("[name='id_kategori']").val());
             data.append('prioritas', $("[name='prioritas']").val());
+            data.append('id_srikandi_ref', $("[name='id_srikandi_ref']").val());
 
 			$.ajax({ 
 				type: "POST",
@@ -158,6 +159,12 @@
 									echo  set_value('filename');
 								}
 								 ?>"/> *
+								 <input type="hidden" name="id_srikandi_ref" value="<?php echo $id_srikandi_ref; ?>">
+								 <input type="hidden" name="judul" value="<?php echo $detail_upload['judul']; ?>">
+								 <input type="hidden" name="id_subdit" value="<?php echo $detail_upload['id_subdit']; ?>">
+								 <input type="hidden" name="id_kategori" value="<?php echo $detail_upload['id_kategori']; ?>">
+								 <input type="hidden" name="id_kategori_parent" value="<?php echo $detail_upload['id_kategori_parent']; ?>">
+								 <input type="hidden" name="prioritas" value="<?php echo $detail_upload['prioritas']; ?>">
 						</td>
 					</tr>
 				</table>

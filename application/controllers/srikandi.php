@@ -55,8 +55,8 @@ class Srikandi extends CI_Controller {
   	public function timeline_comment($id_srikandi = 0){
   		$data = array();
        	$data['data_comment'] 	= $this->srikandi_model->get_comment($id_srikandi);
-
   		echo $this->parser->parse("srikandi/komentar",$data);
+
 
   		die();
   	}
@@ -102,10 +102,12 @@ class Srikandi extends CI_Controller {
 
 		$data['action']="add";
 		$data['option_subdit']=$this->crud->option_subdit('','style="height:25px;padding:2px;margin: 0;"');
+		$data['detail_upload']  = $this->srikandi_model->getSubdit_detail($id_srikandi);
+		$data['id_srikandi_ref'] = $id_srikandi;
+
 
 		echo $this->parser->parse("srikandi/form_rev",$data,true);
     }
-    
     function add_upload(){
         $this->authentication->verify('srikandi','add');
 		$data['action']="add";
