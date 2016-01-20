@@ -151,6 +151,7 @@ $(document).ready(function (){
                 //$("#response").html(data);
                 //document.getElementById("komentarid").innerHTML= '';
 				timeline_comment();
+				document.getElementById('komentarid').value = "";
             });
         });
     
