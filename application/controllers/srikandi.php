@@ -35,7 +35,6 @@ class Srikandi extends CI_Controller {
         
 		$data['add_permission']		= $this->authentication->verify_check('srikandi','show');
        	$data['detail_upload'] 		= $this->srikandi_model->getSubdit_detail($id);
-       	$data['data_detailupload'] 	= $this->srikandi_model->upload_detail($id);
        	$data['id_srikandi'] 		= $id;
         $data['content'] 			= $this->parser->parse("srikandi/detail",$data,true);
 
@@ -52,6 +51,25 @@ class Srikandi extends CI_Controller {
                 $this->srikandi_model->komentar();
             }
   	}
+
+  	public function timeline_comment($id_srikandi = 0){
+  		$data = array();
+       	$data['data_comment'] 	= $this->srikandi_model->get_comment($id_srikandi);
+
+  		echo $this->parser->parse("srikandi/komentar",$data);
+
+  		die();
+  	}
+
+  	public function timeline_file($id_srikandi = 0){
+  		$data = array();
+       	$data['data_file'] 	= $this->srikandi_model->upload_detail($id_srikandi);
+
+  		echo $this->parser->parse("srikandi/file",$data);
+
+  		die();
+  	}
+
     function filter(){
 		if($_POST) {
 			$this->session->set_userdata('searchsubdit', $this->input->post('subdit'));

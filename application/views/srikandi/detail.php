@@ -17,13 +17,28 @@
 			$.get("<?php echo base_url();?>srikandi/add_upload_rev/{id_srikandi}" , function(response) {
 				$("#popup_content_upload").html("<div>"+response+"</div>");
 			});
-		});       
+		});
+
+	   timeline_comment();
+	   timeline_file();
     });
 
 	function close_dialog_upload(s){
 		$("#popup_upload").jqxWindow('close');
+		timeline_file();
 	}
 
+	function timeline_file(){
+		$.get("<?php echo base_url();?>srikandi/timeline_file/{id_srikandi}" , function(response) {
+			$("#timeline-file").html(response);
+		});
+	}
+
+	function timeline_comment(){
+		$.get("<?php echo base_url();?>srikandi/timeline_comment/{id_srikandi}" , function(response) {
+			$("#timeline-comment").html(response);
+		});
+	}
 </script>
 
 <div id="popup_upload" style="display:none"><div id="popup_title_upload">Upload Data Revisi</div><div id="popup_content_upload">{popup}</div></div>
@@ -91,33 +106,7 @@ Upload oleh : <?php echo $detail_upload['username']?>, <?php echo date("d-m-Y H:
 		<div class="widget-title">
 			<h4><i class="icon-file"></i> File Informasi Kajian </h4>
 		</div>
-		<div class="widget-body">
-			<table class="table table-hover">
-				<tr>
-					<th>&nbsp;</th>
-					<th>No</th>
-					<th>Nama File</th>
-					<th>Waktu Upload</th>
-				</tr>
-				<?php
-		    	$no=1;
-			 	if(isset($data_detailupload)){
-			        foreach($data_detailupload as $rows){
-		     	?>
-				<tr>
-					<td><a class="btn btn-mini" href="#modalEditBarang<?php echo $rows->id_srikandi;?>" data-toggle="modal"><i class="icon-pencil"></i> Edit</a> | 
-					<a class="btn btn-mini" href="#modalEditBarang<?php echo $rows->id_srikandi;?>" data-toggle="modal"><i class="icon-file"></i> Download</a></td>
-					<td><?php echo $no++; ?></td>
-					<td><?php echo $rows->filename; ?> </td>
-					<td><?php echo date("d-m-Y H:i:s",$rows->update); ?></td>
-				</tr>
-				<?php
-					} 
-				}
-				?>
-
-			</table>
-		</div>
+		<div class="widget-body" id="timeline-file"></div>
 	</div>
 	<div class="widget purple">
 		<div class="widget-title">
@@ -127,22 +116,7 @@ Upload oleh : <?php echo $detail_upload['username']?>, <?php echo date("d-m-Y H:
 		<div class="widget-body">
 
 
-			 <div class="timeline-messages">
-					 <div class="msg-time-chat">
-						 <div class="message-img"><img src="<?php echo base_url(); ?>media/images/user/" alt="" class="avatar"/></div>
-						 <div class="message-body msg-out">
-							 <span class="arrow"></span>
-							 <div class="text">
-								 <p class="attribution">by admin, 2012-12-12 12:12:12</p>
-								 <p>
-									<a href="<?php echo base_url() ?>spkp/detail/announcement/#">
-										<b>komentar anda disini</b>
-									</a>
-								</p>
-							 </div>
-						 </div>
-					 </div>
-			 </div>
+			 <div class="timeline-messages" id="timeline-comment"></div>
 
 
 			<form class="form-inline" role="form" id="frmadd" action="<?php echo base_url() ?>srikandi/komentar" method="POST">
@@ -174,9 +148,9 @@ $(document).ready(function (){
                 type:'POST',
                 data:data
             }).done(function (data){
-                $("#response").html(data);
-                 document.getElementById("komentarid").innerHTML= '';
-                 //fillgrid();
+                //$("#response").html(data);
+                //document.getElementById("komentarid").innerHTML= '';
+				timeline_comment();
             });
         });
     

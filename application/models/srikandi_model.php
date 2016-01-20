@@ -31,6 +31,14 @@ class Srikandi_model extends CI_Model {
             return false;
         }
     }
+
+    function get_comment($id){
+        $query = $this->db->get_where('srikandi_comment', array('id_srikandi'=>$id));
+        $data = $query->result_array(); 
+
+        return $data;
+    }
+
     function get_data_row($id){
         $query = $this->db->get_where('srikandi', array('id_srikandi'=>$id),1);
         $data = $query->row_array(); 
