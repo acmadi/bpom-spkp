@@ -126,10 +126,10 @@
 <div id="uploadloader" style='display:none;text-align:center'><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>uploading<br><br><br><br></div>
 <div id="uploaddiv" style="padding:5px;text-align:center">
 <form method="POST" id="frmData">
-	<?php if($action=="edit"){ ?><button type="button" name="btn_delete"> Delete Data </button> - <?php } ?>
-	<button type="button" name="btn_simpan" class="btn btn-default"> <i class="icon-upload"></i> Simpan </button>
-	<button type="reset" class="btn btn-default"> <i class="icon-upload"></i> Ulang </button>
-	<button type="button" onCLick="close_dialog_upload();" class="btn btn-default"> <i class="icon-upload"></i> Batal </button>
+	<?php if($action=="edit"){ ?><button type="button" name="btn_delete" class="icon-remove"> Delete Data </button> - <?php } ?>
+	<button type="button" name="btn_simpan" class="btn btn-default"> <i class="icon-plus"></i> Simpan </button>
+	<button type="reset" class="btn btn-default"> <i class=" icon-repeat"></i> Ulang </button>
+	<button type="button" onCLick="close_dialog_upload();" class="btn btn-default"> <i class="icon-minus-sign"></i> Batal </button>
 	<br />
 	<br />
 	<table border="0" cellpadding="0" cellspacing="8" align="center" width='90%'>

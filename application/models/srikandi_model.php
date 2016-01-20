@@ -8,13 +8,17 @@ class Srikandi_model extends CI_Model {
     
     function json_judul(){
         $query = "SELECT @i:=@i+1 AS urut,  IF(a.update>1,FROM_UNIXTIME(a.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update,
-                a.id_srikandi AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama as kategori
+                a.id_srikandi AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori,
+                (SELECT COUNT(*) FROM srikandi_comment WHERE id_srikandi = a.id_srikandi) AS jumlahkomen,
+                (SELECT COUNT(*) FROM srikandi WHERE id_srikandi_ref = a.id_srikandi) AS jumlahrevisi
                 FROM srikandi a 
                 JOIN app_users_list b ON a.uploader = b.id
                 JOIN mas_srikandi_kategori c ON a.id_kategori = c.id_kategori";
 
                 if($this->session->userdata('searchsubdit')!=""){
-                    $query .= " WHERE a.id_subdit='".$this->session->userdata('searchsubdit')."'";
+                    $query .= " WHERE a.id_subdit='".$this->session->userdata('searchsubdit')."' and a.id_srikandi_ref =0";
+                }else{
+                    $query .= " WHERE a.id_srikandi_ref =0";
                 }
        
        return $this->crud->jqxGrid($query);         

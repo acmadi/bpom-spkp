@@ -16,7 +16,9 @@
 			{ name: 'prioritas', type: 'string' },			            
             { name: 'deskripsi', type: 'string' },
             { name: 'kategori', type: 'string' },
-            { name: 'filename',  type: 'string' }
+            { name: 'filename',  type: 'string' },
+            { name: 'jumlahrevisi',  type: 'string' },
+            { name: 'jumlahkomen',  type: 'string' }
         ],
 		url: "<?php echo base_url(); ?>srikandi/json_judul/{subdit}",
 		cache: false,
@@ -88,8 +90,8 @@
 			    { text: 'Judul Informasi dan Kajian', datafield: 'judul', columntype: 'textbox', filtertype: 'textbox', width: '30%' },
 				{ text: 'Kategori', datafield: 'kategori', columntype: 'textbox', filtertype: 'textbox', width: '18%' },
 				{ text: 'Prioritas', datafield: 'prioritas', columntype: 'textbox', filtertype: 'textbox',  width: '9%' },
-				{ text: 'Revisi', filtertype: 'textbox', columntype: 'textbox', width: '5%' },
-				{ text: 'Komentar', filtertype: 'textbox', columntype: 'textbox', width: '7%' },
+				{ text: 'Revisi', datafield: 'jumlahrevisi',filtertype: 'textbox', columntype: 'textbox', width: '5%' },
+				{ text: 'Komentar', datafield: 'jumlahkomen',filtertype: 'textbox', columntype: 'textbox', width: '7%' },
 				{ text: 'User', datafield: 'username', filtertype: 'textbox', columntype: 'textbox', width: '8%' },
 				{ text: 'Date', datafield: 'waktu_update', columntype: 'date', filtertype: 'date', cellsformat: 'yyyy/MM/dd HH:mm:ss', width: '13%' }
             ]

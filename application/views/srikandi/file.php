@@ -37,10 +37,12 @@ if (isset($data_file)){
                 	<?php
                 		echo "<b>Judul : ".$rowss->judul."<br/>Deskripsi : ".$rowss->deskripsi."<br/> Nama File :".$rowss->filename."</b><br/>";
                 	?>
-                    <p align="center"><a href="<?php echo base_url()?>srikandi/dodownload/<?php echo $rowss->id_srikandi; ?>" target="_blank"><button class="btn btn-large btn-danger" type="button" name="btn_download"> Download </button></a></p>
+                    <p align="center"><a href="<?php echo base_url()?>srikandi/dodownload/<?php echo $rowss->id_srikandi; ?>" target="_blank"><button class="btn btn-large " type="button" name="btn_download"> Download </button></a>
+                    <button class="btn btn-large " data-dismiss="modal" aria-hidden="true">Close</button>
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    
                 </div>
             </form>
         </div>
