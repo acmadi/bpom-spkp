@@ -115,6 +115,10 @@ class Srikandi extends CI_Controller {
 
 		echo $this->parser->parse("srikandi/form",$data,true);
     }
+    function delete_komentar($id=0){
+        $this->db->where('id_comment',$id);
+        return $this->db->delete('srikandi_comment');
+    }
     
     function doadd_upload(){
         $this->authentication->verify('srikandi','add');
