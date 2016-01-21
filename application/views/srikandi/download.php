@@ -1,7 +1,5 @@
 <script type="text/javascript">
     $(document).ready(function(){
-		$("button").jqxInput({ theme: 'fresh', height: '28px', width: '100px' }); 
-
 		$("[name='btn_download']").click(function(){
 			window.open("<?php echo base_url()?>srikandi/dodownload/{id_srikandi}");
 		});
@@ -10,8 +8,8 @@
 <div id="uploadloader" style='display:none;text-align:center'><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>uploading<br><br><br><br></div>
 <div id="uploaddiv" style="padding:5px;text-align:center">
 <form method="POST" id="frmData">
-	<button type="button" name="btn_download"> Download </button>
-	<button type="button" onCLick="close_dialog_upload();"> Batal </button>
+	<button type="button" name="btn_download" class="btn btn-default"><i class="icon-download"></i> Download </button>
+	<button type="button" onCLick="close_dialog_upload();" class="btn btn-default"> <i class="icon-minus-sign"></i>Batal </button>
 	<br />
 	<br />
     <table border="0" cellpadding="0" cellspacing="8" align="center">

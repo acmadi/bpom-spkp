@@ -9,7 +9,7 @@ if(isset($data_comment)){
 		 <div class="text">
 			 <p class="attribution">by <?php echo $rows->username; ?>, <?php echo date("d-m-Y H:i:s",$rows->update); ?></p>
 			 <p>
-				<a href="<?php echo base_url() ?>spkp/detail/announcement/#">
+				<a href="<?php // echo base_url()spkp/detail/announcement/ ?>#">
 					<b><?php echo $rows->komentar; ?></b>
 				</a>
 			</p>

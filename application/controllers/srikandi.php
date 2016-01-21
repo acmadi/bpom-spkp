@@ -111,7 +111,7 @@ class Srikandi extends CI_Controller {
     function add_upload(){
         $this->authentication->verify('srikandi','add');
 		$data['action']="add";
-		$data['option_subdit']=$this->crud->option_subdit('','style="height:25px;padding:2px;margin: 0;"');
+		$data['option_subdit']=$this->crud->option_subdit('','style="height:25px;padding:2px;margin: 0;width:92%"');
 
 		echo $this->parser->parse("srikandi/form",$data,true);
     }
@@ -170,7 +170,7 @@ class Srikandi extends CI_Controller {
 
 		$data = $this->srikandi_model->get_data_row($id);
 		$data['action']="edit";
-		$data['option_subdit']=$this->crud->option_subdit($data['id_subdit'],'style="height:25px;padding:2px;margin: 0;"');
+		$data['option_subdit']=$this->crud->option_subdit($data['id_subdit'],'style="height:25px;padding:2px;margin: 0;width:92%"');
 
 		echo $this->parser->parse("srikandi/form",$data,true);
     }

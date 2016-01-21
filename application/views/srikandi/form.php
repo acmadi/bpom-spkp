@@ -195,13 +195,13 @@
 					<tr valign="top">
 						<td rowspan="2">Kategori</td>
 						<td rowspan="2">:</td>
-						<td>
-							<select name="id_kategori_parent" id="id_kategori_parent" style="height:25px;padding:2px;margin: 0;"></select> *
+						<td> 
+							<select name="id_kategori_parent" id="id_kategori_parent" style="height:25px;padding:2px;margin: 0;width:92%"></select> *
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<select name="id_kategori" id="id_kategori" style="height:25px;padding:2px;margin: 0;"></select>
+							<select name="id_kategori" id="id_kategori" style="height:25px;padding:2px;margin: 0;width:92%"></select>
 						</td>
 					</tr>	
 					<?php } ?>				
@@ -243,7 +243,7 @@
 						<td>Prioritas</td>
 						<td>:</td>
 						<td>
-							<select name="prioritas" style="height:25px;padding:2px;margin: 0;">
+							<select name="prioritas" style="height:25px;padding:2px;margin: 0;width:92%">
 								<option value='Biasa' <?php echo(isset($tipe) && $tipe=='Biasa' ? "selected":"") ?>>Biasa</option>
 								<option value='Penting' <?php echo(isset($tipe) && $tipe=='Penting' ? "selected":"") ?>>Penting</option>							
 								<option value='Segera' <?php echo(isset($tipe) && $tipe=='Segera' ? "selected":"") ?>>Segera</option>							
