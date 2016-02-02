@@ -1,6 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("textarea").jqxInput({  height: '100px', width: '95%'}); 
+        $("input[name='judul']").jqxInput({ height: '24px', width: '95%'}); 
         
         $('#id_subdit').change(function(){
 			$.get("<?php echo base_url()?>srikandi/getKategoriParent/"+ $(this).val(), function(response) {
@@ -136,6 +137,19 @@
 		<tr>
 			<td>
                 <table border="0" cellpadding="3" cellspacing="2" width='100%'>
+                    <tr>
+                        <td>Judul </td>
+                        <td>:</td>
+                        <td>
+                        	<input type="text" name="judul" value="<?php 
+								if(set_value('judul')=="" && isset($judul)){
+								 	echo $judul;
+								}else{
+									echo  set_value('judul');
+								}
+								 ?>"/>
+                        </td>
+                    </tr>
                     <tr>
                         <td>Deskripsi </td>
                         <td>:</td>

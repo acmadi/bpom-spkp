@@ -1,22 +1,31 @@
 
-<table class="table table-hover">
+<table class="table table-hover" style="font-size:11px">
 	<tr>
-		<th>&nbsp;</th>
-		<th>No</th>
-		<th>Nama File</th>
-		<th>Waktu Upload</th>
+		<th width="20%" colspan="2">&nbsp;</th>
+		<th width="5%" >No</th>
+		<th width="55%" >Judul / File</th>
+		<th width="10%" >Uploader</th>
+		<th width="15%" >Waktu Upload</th>
 	</tr>
 	<?php
 	$no=1;
  	if(isset($data_file)){
         foreach($data_file as $rows){
  	?>
-	<tr>
-		<td><button  class="btn btn-mini btn-primary" onclick="edit_upload(<?php echo $rows->id_srikandi;?>)"><i class="icon-pencil"></i>  Edit</button> 
-		<!--<a  href="#modalDownloadFile<?php echo $rows->id_srikandi;?>" data-toggle="modal"><button  class="btn btn-mini btn-primary"><i class="icon-file"></i>  Download</button></td>-->
-		<button  class="btn btn-mini btn-primary" onclick="download(<?php echo $rows->id_srikandi;?>)"><i class="icon-pencil"></i>  Download</button> 
+	<tr <?php if(($rows->status_log!=1) && ($rows->id_srikandi != $rows->id_srikandi_ref)){ ?>style="font-weight:bold"<?php } ?>>
+		<td>
+			<?php if($rows->id_srikandi != $rows->id_srikandi_ref){ ?>
+				<input type="checkbox" name="kajian[]" value="<?php echo $rows->id_srikandi;?>">
+			<?php } ?>
+		</td>
+		<td>
+			<?php if($rows->id_srikandi != $rows->id_srikandi_ref){ ?>
+				<button  class="btn btn-mini btn-primary" onclick="edit_upload(<?php echo $rows->id_srikandi;?>)"><i class="icon-pencil"></i>  Edit</button> 
+			<?php } ?>
+			<button  class="btn btn-mini btn-primary" onclick="download(<?php echo $rows->id_srikandi;?>)"><i class="icon-pencil"></i>  Download</button> 
 		<td><?php echo $no++; ?></td>
-		<td><?php echo $rows->filename; ?> </td>
+		<td><?php echo $rows->judul; ?><br><?php echo $rows->filename; ?> </td>
+		<td><?php echo $rows->username; ?> </td>
 		<td><?php echo date("d-m-Y H:i:s",$rows->update); ?></td>
 	</tr>
 	<?php

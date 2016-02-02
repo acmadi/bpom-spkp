@@ -23,22 +23,25 @@
 		<thead>
 		<tr style="font-weight:bold">
 			<td>No</td>
-			<td>Tanggal</td>
 			<td>Judul</td>
-			<td>Tipe</td>
-            <td>Keterangan</td>
+            <td>Deskripsi</td>
+			<td>Status</td>
 			<td>File</td>
+			<td>Tanggal</td>
         </tr>
 		<?php
+    	$i=0;
         if(is_array($Rows)){
-		foreach($Rows as $key=>$val){?>
+		foreach($Rows as $key=>$val){
+			$i++;
+			?>
 		<tr>
-			<td><?php echo $val['urut'] ?></td>
-			<td><?php echo $val['waktu'] ?></td>
+			<td><?php echo $i ?></td>
 			<td><?php echo $val['judul'] ?></td>
-			<td><?php echo $val['tipe'] ?></td>
-            <td><?php echo $val['ket_file'] ?></td>
+			<td><?php echo $val['deskripsi'] ?></td>
+			<td><?php echo $val['prioritas'] ?></td>
 			<td><?php echo $val['filename'] ?></td>
+            <td><?php echo $val['waktu_update'] ?></td>
         </tr>
 		<?php }}?>
 		</thead>

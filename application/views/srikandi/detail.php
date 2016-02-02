@@ -19,6 +19,25 @@
 			});
 		});
 
+	    $('#btn_hapus').click(function(){
+			var values = new Array();	
+			var	data = "";
+			$.each($("input[name='kajian[]']:checked"), function() {
+			  values.push($(this).val());		
+			});
+			
+			if(values.length > 0){
+				if(confirm('Hapus '+ values.length +' data kajian?')){
+					$.post("<?php echo base_url().'srikandi/dodel_rev'; ?>", {data: values} ,  function(res) {
+						alert(res);
+	   					timeline_file();
+					});
+				}
+			}else{
+				alert('Silahkan Pilih Kajian Terlebih Dahulu');
+			}
+		});
+
 	   timeline_comment();
 	   timeline_file();
     });
@@ -99,6 +118,7 @@ Upload oleh : <?php echo $detail_upload['username']?>, <?php echo date("d-m-Y H:
 ?>
 <p align="right">
 	<a href="#" id="btn_tambah_upload" data-toggle="modal"><button class="btn btn-success" type="button"><i class="icon-upload"></i> Upload File Revisi </button></a>
+	<button class="btn btn-danger" type="button" id="btn_hapus"><i class="icon-trash"></i> Hapus  </button>
 	<a href="<?php echo base_url();?>srikandi"><button class="btn btn-warning" type="button"><i class="icon-circle-arrow-left"></i> Kembali  </button></a>
 </p>
 

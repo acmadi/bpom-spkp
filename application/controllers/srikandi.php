@@ -38,6 +38,8 @@ class Srikandi extends CI_Controller {
        	$data['id_srikandi'] 		= $id;
         $data['content'] 			= $this->parser->parse("srikandi/detail",$data,true);
 
+        $this->srikandi_model->log($id);
+
 		$this->template->show($data,"home");
     }
 
@@ -103,6 +105,7 @@ class Srikandi extends CI_Controller {
 		$data['action']="add";
 		$data['option_subdit']=$this->crud->option_subdit('','style="height:25px;padding:2px;margin: 0;"');
 		$data['detail_upload']  = $this->srikandi_model->getSubdit_detail($id_srikandi);
+		$data['judul'] = "Re: ".$data['detail_upload']['judul'];
 		$data['id_srikandi_ref'] = $id_srikandi;
 
 
@@ -225,14 +228,56 @@ class Srikandi extends CI_Controller {
 			}
 		}
     }
+
+    function dodel(){
+        $this->authentication->verify('srikandi','del');
+        
+        $ids = $this->input->post('data');
+		foreach ($ids as $id) {
+			$data = $this->srikandi_model->get_data_row($id);
+			$path = './public/files/srikandi/'.$data['uploader']."/".$data['filename'];
+
+			if($this->srikandi_model->delete_ref($id)){
+				if(file_exists($path)){
+					unlink($path);
+				}
+			}
+		}
+
+		die(count($ids).' data berhasil dihapus');
+    }
+    
+    function dodel_rev(){
+        $this->authentication->verify('srikandi','del');
+        
+        $ids = $this->input->post('data');
+		foreach ($ids as $id) {
+			$data = $this->srikandi_model->get_data_row($id);
+			$path = './public/files/srikandi/'.$data['uploader']."/".$data['filename'];
+
+			if($this->srikandi_model->delete_upload($id)){
+				if($data['status'] == 1){
+					$this->db->update('srikandi', array('status'=>1), array('id_srikandi'=>$data['id_srikandi_ref']));
+			        $this->db->where('id_srikandi', $data['id_srikandi_ref']);
+			        $this->db->delete('srikandi_log');
+				}
+
+				if(file_exists($path)){
+					unlink($path);
+				}
+			}
+		}
+
+		die(count($ids).' data berhasil dihapus');
+    }
     
     function delete_upload($id){
         $this->authentication->verify('srikandi','del');
         
 		$data = $this->srikandi_model->get_data_row($id);
-		$path = './public/files/srikandi/'.$this->session->userdata('id')."/".$data['filename'];
+		$path = './public/files/srikandi/'.$data['uploader']."/".$data['filename'];
 
-		if($this->srikandi_model->delete_upload($id)){
+		if($this->srikandi_model->delete_ref($id)){
 			if(file_exists($path)){
 				unlink($path);
 			}
@@ -242,23 +287,23 @@ class Srikandi extends CI_Controller {
 		}
     }
     
-    function html_upload($thn){
+    function html_upload(){
         $this->authentication->verify('srikandi','show');
 		
-		$data = $this->srikandi_model->json_judul($thn);
+		$data = $this->srikandi_model->json_judul();
 
 		$data['Rows'] = $data[0]['Rows'];
+
 		$this->parser->parse("srikandi/html",$data);
     }
     
-    function excel_upload($thn){
+    function excel_upload(){
         $this->authentication->verify('srikandi','show');
 
-		$data = $this->srikandi_model->json_judul($thn);
+		$data = $this->srikandi_model->json_judul();
 
 		$rows = $data[0]['Rows'];
 		$data['title'] = "Informasi dan Kajian";
-        $data['thn'] = "Tahun ".$thn;
         
 		$path = dirname(__FILE__).'/../../public/doc_xls_';
 		$TBS = new clsTinyButStrong;
@@ -278,6 +323,7 @@ class Srikandi extends CI_Controller {
 		$this->authentication->verify('srikandi','edit');
 
 		$data = $this->srikandi_model->get_data_row($id);
+        $this->srikandi_model->log($id);
 		
         echo $this->parser->parse("srikandi/download",$data,true);
 	}
