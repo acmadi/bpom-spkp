@@ -12,7 +12,7 @@ class Srikandi_kategori_model extends CI_Model {
     function insert_kategori(){
         $data['id_subdit'] = $this->input->post('id_subdit');
         $data['nama'] =  $this->input->post('kategori_parent');
-        $data['id_kategori_parent'] =  0;
+        $data['id_kategori_parent'] =  $this->input->post('id_ketegori');
 
         if($this->db->insert('mas_srikandi_kategori', $data)){
             $id = mysql_insert_id();

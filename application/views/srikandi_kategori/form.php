@@ -3,26 +3,6 @@
         
         $("input[type='text']").jqxInput({ theme: 'fresh', height: '22px', width: '90%'}); 
         
-        $('#id_subdit').change(function(){
-			$.get("<?php echo base_url()?>srikandi/getKategoriParent/"+ $(this).val(), function(response) {
-				var data = eval(response);
-
-				$("#id_kategori_parent").html(data.kategori);
-				$("#id_kategori_parent").change();
-
-			}, "json");
-
-		});
-        
-        $('#id_kategori_parent').change(function(){
-			$.get("<?php echo base_url()?>srikandi/getKategori/"+ $(this).val(), function(response) {
-				var data = eval(response);
-
-				$("#id_kategori").html(data.kategori);
-
-			}, "json");
-
-		});
 
 		$("[name='btn_simpan']").click(function(){
 			$("#uploaddiv").hide();
@@ -31,7 +11,12 @@
 			var data = new FormData();	
 			data.append('id_subdit', $("[name='id_subdit']").val());
 			data.append('kategori_parent', $("[name='kategori_parent']").val());
-            
+			<?php if(isset($subkategori)&&$subkategori=="subkategori"){?>
+			data.append('id_ketegori', $("[name='id_ketegori']").val());
+
+			<?php }else{ ?>
+				data.append('id_ketegori', 0);
+			<?php } ?>
 			$.ajax({ 
 				type: "POST",
 				cache: false,
@@ -101,19 +86,6 @@
 			}				 
 		});
 
-		$.get("<?php echo base_url()?>srikandi/getKategoriParent/{id_subdit}/{id_kategori_parent}", function(response) {
-			var data = eval(response);
-
-			$("#id_kategori_parent").html(data.kategori);
-			
-			$.get("<?php echo base_url()?>srikandi/getKategori/{id_kategori_parent}/{id_kategori}", function(response) {
-				var data = eval(response);
-
-				$("#id_kategori").html(data.kategori);
-
-			}, "json");
-
-		}, "json");
 	});
 </script>
 <div id="uploadloader" style='display:none;text-align:center'><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>uploading<br><br><br><br></div>
@@ -144,12 +116,11 @@
                             {option_kategori} *
 						</td>
 					</tr>
-					<?php } ?>
 					<tr>
-						<td width="30%">Kategori </td>
+						<td width="30%">Sub Kategori </td>
 						<td>:</td>
 						<td>
-                            <input type="text" size="40" maxlength="100" name="kategori_parent" id="id_kategori_parent" value="<?php 
+                            <input type="text" size="40" maxlength="100" name="kategori_parent" id="kategori_parent" value="<?php 
 								if(set_value('kategori_parent')=="" && isset($kategori_parent)){
 								 	echo $kategori_parent;
 								}else{
@@ -159,7 +130,22 @@
 								style="height:25px;padding:2px;margin: 0;width:92%" /> *
 						</td>
 					</tr>
-					
+					<?php }else{ ?>
+					<tr>
+						<td width="30%">Kategori </td>
+						<td>:</td>
+						<td>
+                            <input type="text" size="40" maxlength="100" name="kategori_parent" id="kategori_parent" value="<?php 
+								if(set_value('kategori_parent')=="" && isset($kategori_parent)){
+								 	echo $kategori_parent;
+								}else{
+									echo  set_value('kategori_parent');
+								}
+								 ?>"
+								style="height:25px;padding:2px;margin: 0;width:92%" /> *
+						</td>
+					</tr>
+					<?php } ?>
 				</table>
 			</td>
 		</tr>

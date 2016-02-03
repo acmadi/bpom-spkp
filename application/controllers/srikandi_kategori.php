@@ -160,6 +160,7 @@ class Srikandi_kategori extends CI_Controller {
         
 		$this->form_validation->set_rules('id_subdit', 'Sub Dit', 'trim|required');
 		$this->form_validation->set_rules('kategori_parent', 'Kategori', 'trim|required');
+
         
 		if($this->form_validation->run()== FALSE){
 			echo "ERROR_".validation_errors();
@@ -231,22 +232,13 @@ class Srikandi_kategori extends CI_Controller {
 		}
     }
 
-    function dodel(){
+    function dodel($id){
         $this->authentication->verify('srikandi','del');
         
-        $ids = $this->input->post('data');
-		foreach ($ids as $id) {
-			$data = $this->srikandi_model->get_data_row($id);
-			$path = './public/files/srikandi/'.$data['uploader']."/".$data['filename'];
+		$this->db->where('id_kategori', $id);
 
-			if($this->srikandi_model->delete_ref($id)){
-				if(file_exists($path)){
-					unlink($path);
-				}
-			}
-		}
+		return $this->db->delete('mas_srikandi_kategori');
 
-		die(count($ids).' data berhasil dihapus');
     }
     
     function dodel_rev(){

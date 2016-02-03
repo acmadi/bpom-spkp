@@ -276,6 +276,15 @@ class Crud extends CI_Model {
 		}
 		return $html."</select>";
 	}
+	function option_kategori($id_kategori=0,$id_subdit=0,$attr=""){
+		$sql = "SELECT * FROM mas_srikandi_kategori WHERE id_subdit=$id_subdit and id_kategori=$id_kategori";
+		$query = $this->db->query($sql);
+		$html = "<select id='id_kategori' name='id_ketegori' ".$attr.">";
+		foreach($query->result() as $rows){
+			$html .= "<option value=".$rows->id_kategori." ".($id_kategori==$rows->id_kategori ? "selected" : "" ).">".$rows->nama."</option>";
+		}
+		return $html."</select>";
+	}
 	
 	function option_subdit_top($id_subdit=0,$attr=""){
 		$sql = "SELECT * FROM mas_subdit";
