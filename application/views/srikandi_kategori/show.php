@@ -11,7 +11,7 @@
 				$.notific8('Notification', {
 				  	life: 5000,
 				  	message: 'Delete data succesfully.',
-					heading: 'Saving data',
+					heading: 'Delete data',
 				  	theme: 'lime2'
 				});
 				myFunction();
@@ -72,16 +72,20 @@
 <div id="popup_upload" style="display:none"><div id="popup_title_upload">Tambah Kategori</div><div id="popup_content_upload">{popup}</div></div>
 <div id="popup_subketegori" style="display:none"><div id="popup_title_subkategori">Tambah Sub Kategori</div><div id="popup_content_sub">{popup}</div></div>
 <div>
-	<div style="width:100%;background-color:#DDDDDD;-moz-border-radius:5px;border-radius:5px;padding:2px;border:3px solid #ebebeb;">
+	<div style="width:99%;background-color:#DDDDDD;-moz-border-radius:5px;border-radius:5px;padding:2px;border:3px solid #ebebeb;">
         <?php if($add_permission){?>
-        	<input style="padding: 5px;" value=" Tambah Informasi dan Kajian " id="btn_tambah_kategori" type="button"/>
-        	<input style="padding: 5px;" value=" Hapus Kajian " id="btn_hapus" type="button"/>
+        	<input style="padding: 5px;" value=" Tambah Kategori Utama" id="btn_tambah_kategori" type="button"/>
+        	<!--<input style="padding: 5px;" value=" Hapus Kajian " id="btn_hapus" type="button"/>-->
         <?php } ?>
 	</div>
-    <div style="background-color:#ebe7e0;">    
+	<table bgcolor="#ebe7e0" width="100%">
+	<tr bgcolor="#ebe7e0">
+		<td bgcolor="#ebe7e0">
         <span style='float: left; position:relative; margin-top: 5px; margin-right: 4px;background-color:#ebe7e0;' >Pilih Subdit: </span>
         <div style='float: left;position:relative;width:500px;background-color:#ebe7e0;'><select onchange="myFunction()" class='jqx-input jqx-widget-content jqx-rc-all' id='filter_subdit' name='filter_subdit' style='height: 23px; float: left; width: 450px;' >{option_subdit}</select></div>
-    </div>  
+    	</td>
+    </tr>
+    </table> 
 	<div style="background-color:#ffffff;">
         {menu_tree}
     	<div id="timeline-kategori"></div>
