@@ -7,8 +7,9 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-       $("#bar_datapjas").click();
-        $('#jqxTabs').jqxTabs({ width: '100%', height: '500', position: 'top', theme: theme });
+       $("#bar_datapjas").addClass("active open");
+       $("#laporan_kegiatan").addClass("active");
+       $('#jqxTabs').jqxTabs({ width: '100%', height: '500', position: 'top', theme: theme });
     });
 </script>
 <div id="jqxTabs">

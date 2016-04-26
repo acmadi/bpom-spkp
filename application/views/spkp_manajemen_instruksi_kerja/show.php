@@ -7,6 +7,8 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#bar_manajemenmutu").addClass("active open");
+        $("#qms_instruksi_kerja").addClass("active");
         $('#jqxTabs').jqxTabs({ width: '100%', height: '500', position: 'top', theme: theme });
     });
 </script>

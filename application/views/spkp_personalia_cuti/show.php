@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-       $("#bar_personalia").click();
+       $("#bar_personalia").addClass("active open");
+       $("#cuti").addClass("active");
        $('#jqxTabs').jqxTabs({ width: '100%', height:'920px', position: 'top', theme: theme });
        $("input[type='button']").jqxButton({ height: 28, theme: theme });
       

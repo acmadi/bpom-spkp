@@ -157,7 +157,9 @@ class Spkp_personnel extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_sumberdaya_personalia.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+		echo '../public/doc_xls_export/report_sumberdaya_personalia.xlsx';
+		
 	}
     
     function excel_jabatan($id){

@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-	   $("#bar_manajemenmutu").click();
+	   $("#bar_manajemenmutu").addClass("active open");
+       $("#qms_dokumen_eksternal").addClass("active");
        $('#btn_tambah, #clearfilteringbutton, #refreshdatabutton, #printbutton, #excelbutton').jqxButton({ height: 25, theme: theme });
 
        var source = {

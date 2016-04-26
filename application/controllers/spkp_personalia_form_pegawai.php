@@ -488,7 +488,9 @@ class Spkp_personalia_form_pegawai extends CI_Controller {
 		$TBS->MergeBlock('data', $main);
 		$output_file_name = $path.'export/report_personalia_cuti.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+		echo '../public/doc_xls_export/report_personalia_cuti.xlsx';
+
 	}
     
     function excel_cuti(){
@@ -536,7 +538,9 @@ class Spkp_personalia_form_pegawai extends CI_Controller {
 		$TBS->MergeBlock('data', $main);
 		$output_file_name = $path.'export/report_personalia_sisa_cuti.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+		echo '../public/doc_xls_export/report_personalia_sisa_cuti.xlsx';
+
     }
     
     function save_form($id,$kode){

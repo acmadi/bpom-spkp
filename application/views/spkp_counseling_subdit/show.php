@@ -7,6 +7,8 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#bar_kegiatan").addClass("active open");
+        // $("#subdit_penyuluhan__mss_&_irt").addClass("active");
         $('#jqxTabs').jqxTabs({ width: '100%', height: '500', position: 'top', theme: theme });
     });
 </script>

@@ -1,7 +1,8 @@
 <script>
 	$(function(){
-	   $("#bar_kegiatan").click();
-	   $('#btn_tambah_upload, #clearfilteringbutton_upload, #refreshdatabutton_upload, #printbutton_upload, #excelbutton_upload').jqxButton({ height: 25, theme: theme });
+        $("#bar_kegiatan").addClass("active open");
+        $("#lap_perjalanan_luar_negeri").addClass("active");
+	    $('#btn_tambah_upload, #clearfilteringbutton_upload, #refreshdatabutton_upload, #printbutton_upload, #excelbutton_upload').jqxButton({ height: 25, theme: theme });
 
 	   var source = {
 			datatype: "json",

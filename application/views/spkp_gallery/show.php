@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-       $("#bar_perpustakaan").click();
+        $("#bar_perpustakaan").addClass("active open");
+        $("#galeri").addClass("active");
 	   
 	   $('#btn_tambah').click(function(){
 			$("#popup_content").html("<div style='text-align:center'><br><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>loading</div>");

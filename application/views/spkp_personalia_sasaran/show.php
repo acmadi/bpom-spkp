@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-       $("#bar_personalia").click();
+       $("#bar_personalia").addClass("active open");
+       $("#sasaran_kinerja").addClass("active");
        $('#clearfilteringbutton, #refreshdatabutton, #printbutton, #excelbutton').jqxButton({ height: 25, theme: theme });
       
        var source = {

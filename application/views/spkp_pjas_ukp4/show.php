@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-       $("#bar_datapjas").click();
+       $("#bar_datapjas").addClass("active open");
+       $("#ukp4").addClass("active");
 	   $('#btn_tambah_upload, #clearfilteringbutton_upload, #refreshdatabutton_upload, #printbutton_upload, #excelbutton_upload').jqxButton({ height: 25, theme: theme });
 
 	   var source = {
