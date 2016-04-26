@@ -170,7 +170,7 @@
 			</li>
         </ul>
     </div>
-    <div>
+<!--    <div>
       <div style='margin-top: 2px;'>
           <div style='margin-left: 4px; float: left;'>Master Data Industri</div>
       </div>
@@ -227,6 +227,7 @@
             </li>
         </ul>
     </div>
+-->    
 	<div>
       <div style='margin-top: 2px;'>
           <div style='margin-left: 4px; float: left;'>Master Data Lokasi</div>

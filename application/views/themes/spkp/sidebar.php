@@ -33,8 +33,8 @@
 		   $query_e = $this->db->get_where('app_files', array('id'=>$row->file_id,'lang'=>'ina'));
 		   $data_e = $query_e->row_array();  
 	  ?>
-			<li class="<?php if($data_e['id']=='1') echo "sub-menu active"; else echo "sub-menu"; ?>">
-			  <a style="padding-top:0;padding-bottom:0" href="#" id="bar_<?php echo strtolower(str_replace(" ","",$data_e['filename'])); ?>">
+			<li class="<?php if($data_e['id']=='1') echo "sub-menu active"; else echo "sub-menu"; ?>" id="bar_<?php echo strtolower(str_replace(" ","",$data_e['filename'])); ?>">
+			  <a style="padding-top:0;padding-bottom:0" href="#">
 				  <i class="<?php echo $data_e['class']; ?>"></i>
 				  <span><?php echo $data_e['filename']; ?></span>
 			  </a>
@@ -49,8 +49,9 @@
 				  foreach($query_c->result() as $row_c){
 						$query_d = $this->db->get_where('app_files', array('id'=>$row_c->file_id,'lang'=>'ina'));
 						$data_d = $query_d->row_array();
+						$tmp = str_replace(" ", "_", str_replace("/","",strtolower($data_d['filename'])));
 							?>
-							<li><a style="padding-top:6px;padding-bottom:6px" href="<?php echo base_url().$data_d['module']; ?>"><?php echo $data_d['filename']; ?></a></li>
+							<li id="<?php echo $tmp?>"><a style="padding-top:6px;padding-bottom:6px" href="<?php echo base_url().$data_d['module']; ?>"><?php echo $data_d['filename']; ?></a></li>
 							<?php
 						  
 				  }

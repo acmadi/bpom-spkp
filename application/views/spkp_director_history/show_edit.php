@@ -7,8 +7,9 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#bar_profile").click();
-        $('#jqxTabs').jqxTabs({ width: '100%', height: '960', position: 'top', theme: theme });
+       $("#bar_profile").addClass("active open");
+       $("#riwayat_direktur_dit_spkp").addClass("active");
+       $('#jqxTabs').jqxTabs({ width: '100%', height: '960', position: 'top', theme: theme });
     });
 </script>
 <div id="jqxTabs">

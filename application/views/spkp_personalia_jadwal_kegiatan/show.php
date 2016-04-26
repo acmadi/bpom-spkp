@@ -542,8 +542,6 @@
 			<div style="width:99%;background-color:#DDDDDD;-moz-border-radius:5px;border-radius:5px;padding:2px;border:3px solid #ebebeb;">
 				<input style="padding: 5px;" value=" Clear Filter " id="clearfilteringbutton" type="button" />
 				<input style="padding: 5px;" value=" Refresh Data " id="refreshdatabutton" type="button" />
-				<input style="padding: 5px;" value=" Print " id="printbutton" type="button" />
-				<input style="padding: 5px;" value=" Excel " id="excelbutton" type="button" />
 				<div id="jqxgrid"></div>
 			</div>
 		</div>
@@ -554,8 +552,6 @@
 				<input style="padding: 5px;" value=" Tambah Kegiatan " id="cb_addkegiatan" type="button" />
 				<input style="padding: 5px;" value=" Clear Filter " id="cb_clearfilteringbutton" type="button" />
 				<input style="padding: 5px;" value=" Refresh Data " id="cb_refreshdatabutton" type="button" />
-				<input style="padding: 5px;" value=" Print " id="cb_printbutton" type="button" />
-				<input style="padding: 5px;" value=" Excel " id="cb_excelbutton" type="button" />
 				<div id="jqxgridKegiatan"></div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-       $("#bar_profile").click();
+       $("#bar_profile").addClass("active open");
+       $("#riwayat_direktur_dit_spkp").addClass("active");
        $('#refreshdatabutton, #printbutton, #excelbutton').jqxButton({ height: 25, theme: theme });
       
        var source = {

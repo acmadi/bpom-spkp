@@ -1,7 +1,8 @@
 <script>
 	$(function(){
-       $("#bar_profile").click();
-       
+       $("#bar_profile").addClass("active open");
+       $("#struktur_organisasi").addClass("active");
+      
     }); 		
 </script>
 <div class="row-fluid">

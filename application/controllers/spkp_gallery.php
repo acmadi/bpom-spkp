@@ -71,6 +71,7 @@ class Spkp_gallery extends CI_Controller{
 
 		$data = $this->spkp_gallery_model->get_info($id); 
 		$data['action']="edit";	
+		$data['id']=$id;	
 
 		echo $this->parser->parse("spkp_gallery/form",$data,true);
 	}
@@ -85,7 +86,7 @@ class Spkp_gallery extends CI_Controller{
 			echo validation_errors();
 		}else{
 			$this->spkp_gallery_model->update_entry($id);
-			echo "1";
+			echo "1_".$id;
 		}
 	}
 

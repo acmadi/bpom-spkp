@@ -1,0 +1,28 @@
+{
+	"description" : "A starting point for a codeigniter 3.0 project, installable via composer and preloaded/configured with several useful sparks and libraries.",
+	"name" : "jayalfredprufrock/codeigniter-boilerplate",
+	"license": "MIT",
+	"type": "codeigniter-third-party",
+	"require": {
+		"php": ">=5.3",
+		"composer/installers": "~1.0",
+		"illuminate/view": "4.0.x",
+		"illuminate/database": "4.0.*",
+		"php-activerecord/php-activerecord": "*",
+		"archwisp/php-encrypt-data": "*",
+		"anahkiasen/former": "dev-master",
+		"codeguy/upload": "*",
+		"phpoffice/phpexcel": "*",
+		"swiftmailer/swiftmailer": "@stable",
+		"alchemy/zippy": "*"
+	},
+	"require-dev": {
+		"mikey179/vfsStream": "1.1.*"
+	},
+	"scripts": {
+		"post-update-cmd": ["echo [WARNING] Delete all .git dirs", "rm -rf vendor/**/**/.git"],
+		"post-install-cmd": ["echo [WARNING] Delete all .git dirs", "rm -rf vendor/**/**/.git"]
+	},
+	"extra":{
+	}
+}

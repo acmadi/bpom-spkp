@@ -67,7 +67,8 @@ class Spkp_absen_tunjangan extends CI_Controller {
         if($this->session->userdata('level')=="super administrator" || $this->session->userdata('id')==$id){
             $data['form'] = $this->parser->parse("spkp_absen_tunjangan/form",$data,true);
         }else{
-            $data['form'] = $this->parser->parse("spkp_absen_tunjangan/form_lock",$data,true);
+            $data['form'] = $this->parser->parse("spkp_absen_tunjangan/form",$data,true);
+            //$data['form'] = $this->parser->parse("spkp_absen_tunjangan/form_lock",$data,true);
         }
 
 		$data['content'] = $this->parser->parse("spkp_absen_tunjangan/show_edit",$data,true);
@@ -104,7 +105,8 @@ class Spkp_absen_tunjangan extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_absensi_tukin_rekap.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		//echo $output_file_name;
+		echo '../public/doc_xls_export/report_absensi_tukin_rekap.xlsx';
 	}
     
     function excel_tukin($id,$thn="",$bln=""){
@@ -113,6 +115,7 @@ class Spkp_absen_tunjangan extends CI_Controller {
 		$data = $this->spkp_absen_tunjangan_model->json_absen($id,$thn,$bln);
         
         $rows = $data[0]['Rows'];
+        if(!is_array($rows)) $rows = array();
 		$data['title'] = "Absensi - Tunjangan Kinerja ".$thn."-".$bln;
 
 		$path = dirname(__FILE__).'/../../public/doc_xls_';
@@ -126,7 +129,7 @@ class Spkp_absen_tunjangan extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_absensi_tukin.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		echo '../public/doc_xls_export/report_absensi_tukin.xlsx';
 	}
     
     

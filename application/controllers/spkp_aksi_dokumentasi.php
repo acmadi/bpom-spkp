@@ -71,6 +71,7 @@ class Spkp_aksi_dokumentasi extends CI_Controller{
 
 		$data = $this->spkp_aksi_dokumentasi_model->get_info($id); 
 		$data['action']="edit";	
+		$data['id']=$id;	
 
 		echo $this->parser->parse("spkp_aksi_dokumentasi/form",$data,true);
 	}
@@ -85,7 +86,7 @@ class Spkp_aksi_dokumentasi extends CI_Controller{
 			echo validation_errors();
 		}else{
 			$this->spkp_aksi_dokumentasi_model->update_entry($id);
-			echo "1";
+			echo "1_".$id;
 		}
 	}
 

@@ -106,7 +106,8 @@ class Spkp_director_history extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_profile_direktur.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		//echo $output_file_name;
+		echo '../public/doc_xls_export/report_profile_direktur.xlsx';
 	}
     
     function excel_jabatan($id){
@@ -128,7 +129,8 @@ class Spkp_director_history extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_profile_direktur_jabatan.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		//echo $output_file_name;
+		echo '../public/doc_xls_export/report_profile_direktur_jabatan.xlsx';
 	}
     
     function excel_pangkat($id){
@@ -150,7 +152,8 @@ class Spkp_director_history extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_profile_direktur_pangkat.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		//echo $output_file_name;
+		echo '../public/doc_xls_export/report_profile_direktur_pangkat.xlsx';
 	}
     
     function doedit_profile($id){
@@ -528,7 +531,8 @@ class Spkp_director_history extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_profile_director_file.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		//echo $output_file_name;
+		echo '../public/doc_xls_export/report_profile_director_file.xlsx';
 	}
 
     // end

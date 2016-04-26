@@ -15,10 +15,10 @@ class Spkp_pjas_a023 extends CI_Controller {
 	function index($id_propinsi=0){
 		$this->authentication->verify('spkp_pjas_a023','show');
 		
-		$data['add_permission']=$this->authentication->verify_check('spkp_pjas_f1','add');
+		$data['add_permission']=$this->authentication->verify_check('spkp_pjas_a023','add');
 		$data['title']="A023 Rekapitulasi Pengawalan SD/MI";
 		$data['content']= $this->parser->parse("spkp_pjas_a023/show",$data,true);
-		
+
 		$this->template->show($data,'home');
 	}
 	

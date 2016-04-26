@@ -1,6 +1,7 @@
 <script>
 	$(function(){
-       $("#bar_profile").click();
+       $("#bar_profile").addClass("active open");
+       $("#renstra_-_deputi").addClass("active");
 	   $('#btn_tambah, #clearfilteringbutton, #refreshdatabutton, #printbutton, #excelbutton').jqxButton({ height: 25, theme: theme });
 
 	   var source = {

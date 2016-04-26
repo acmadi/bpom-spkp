@@ -1,6 +1,13 @@
+<style type="text/css">
+	.tbl_list:hover{
+		background: #EFEFEF;
+	}
+
+</style>
 <script> 
 	function close_dialog_kategori(s){
 		$("#popup_upload").jqxWindow('close');
+		$("#popup_subketegori").jqxWindow('close');
 		myFunction();
 		if(s==1){
 			myFunction();
@@ -22,8 +29,8 @@
 			$("#popup_content_sub").html("<div style='text-align:center'><br><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>loading</div>");
 			var offset = $(this).offset();
 			$("#popup_subketegori").jqxWindow({
-                width: 700,
-                height: 440,
+                width: 600,
+                height: 310,
     			isModal: true, autoOpen: false, modalOpacity: 0.2
 			});
             $("#popup_subketegori").jqxWindow('open');
@@ -50,8 +57,8 @@
 				var offset = $(this).offset();
 				$("#popup_upload").jqxWindow({
 					theme: theme, resizable: true, position: { x: offset.left + 135, y: offset.top},
-	                width: 700,
-	                height: 440,
+	                width: 600,
+	                height: 240,
 	    			isModal: true, autoOpen: false, modalOpacity: 0.2
 				});
 	            $("#popup_upload").jqxWindow('open');
@@ -78,17 +85,19 @@
         	<!--<input style="padding: 5px;" value=" Hapus Kajian " id="btn_hapus" type="button"/>-->
         <?php } ?>
 	</div>
+	<div style="width:99%;background-color:#DDDDDD;-moz-border-radius:5px;border-radius:5px;padding:2px;border:3px solid #ebebeb;">
 	<table bgcolor="#ebe7e0" width="100%">
 	<tr bgcolor="#ebe7e0">
 		<td bgcolor="#ebe7e0">
-        <span style='float: left; position:relative; margin-top: 5px; margin-right: 4px;background-color:#ebe7e0;' >Pilih Subdit: </span>
-        <div style='float: left;position:relative;width:500px;background-color:#ebe7e0;'><select onchange="myFunction()" class='jqx-input jqx-widget-content jqx-rc-all' id='filter_subdit' name='filter_subdit' style='height: 23px; float: left; width: 450px;' >{option_subdit}</select></div>
+        <span style='float: left; position:relative; margin: 5px;background-color:#ebe7e0;color:#111' >Pilih Subdit: </span>
+        <div style='float: left;position:relative; margin: 5px; width:500px;background-color:#ebe7e0;'><select onchange="myFunction()" class='jqx-input jqx-widget-content jqx-rc-all' id='filter_subdit' name='filter_subdit' style='height: 23px; float: left; width: 450px;' >{option_subdit}</select></div>
     	</td>
     </tr>
     </table> 
 	<div style="background-color:#ffffff;">
         {menu_tree}
     	<div id="timeline-kategori"></div>
+	</div>
 	</div>
       
 <br>

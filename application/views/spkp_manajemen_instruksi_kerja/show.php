@@ -12,13 +12,13 @@
 </script>
 <div id="jqxTabs">
     <ul>
-        <li id="mn_kegiatan">Kegiatan</li>
+        <!--<li id="mn_kegiatan">Kegiatan</li>-->
         <li id="mn_upload">File IK</li>
     </ul>
+    <!--<div style="padding: 10px;">
+    </div>-->
     <div style="padding: 10px;">
         {form_kegiatan}
-    </div>
-    <div style="padding: 10px;">
         {form_upload}
     </div>
 </div>

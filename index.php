@@ -1,7 +1,7 @@
 <?php
 	ini_set('display_errors','on');
-	ini_set('upload_max_filesize','50M');
-	ini_set('post_max_size','50M');
+	ini_set('upload_max_filesize','128M');
+	ini_set('post_max_size','128M');
 	date_default_timezone_set('Asia/Jakarta');
 
 /*

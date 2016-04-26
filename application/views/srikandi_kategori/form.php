@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         
-        $("input[type='text']").jqxInput({ theme: 'fresh', height: '22px', width: '90%'}); 
+        $("input[type='text']").jqxInput({ theme: 'fresh', height: '22px', width: '86%'}); 
         
 
 		$("[name='btn_simpan']").click(function(){
@@ -102,23 +102,26 @@
 			<td>
                 <table border="0" cellpadding="3" cellspacing="2" width='100%'>
                 	<tr>
-						<td>Sub Dit</td>
-						<td>:</td>
+						<td>Sub Dit :</td>
+					</tr>
+					<tr>
 						<td>
 							{option_subdit} *
 						</td>
 					</tr>
 					<?php if(isset($subkategori)&&$subkategori=="subkategori"){?>
 					<tr>
-						<td width="30%">Kategori </td>
-						<td>:</td>
+						<td width="30%">Kategori :</td>
+					</tr>
+					<tr>
 						<td>
                             {option_kategori} *
 						</td>
 					</tr>
 					<tr>
-						<td width="30%">Sub Kategori </td>
-						<td>:</td>
+						<td width="30%">Sub Kategori :</td>
+					</tr>
+					<tr>
 						<td>
                             <input type="text" size="40" maxlength="100" name="kategori_parent" id="kategori_parent" value="<?php 
 								if(set_value('kategori_parent')=="" && isset($kategori_parent)){
@@ -132,8 +135,9 @@
 					</tr>
 					<?php }else{ ?>
 					<tr>
-						<td width="30%">Kategori </td>
-						<td>:</td>
+						<td width="30%">Kategori :</td>
+					</tr>
+					<tr>
 						<td>
                             <input type="text" size="40" maxlength="100" name="kategori_parent" id="kategori_parent" value="<?php 
 								if(set_value('kategori_parent')=="" && isset($kategori_parent)){
