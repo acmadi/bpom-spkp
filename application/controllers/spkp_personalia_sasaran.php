@@ -275,4 +275,5 @@ class Spkp_personalia_sasaran extends CI_Controller {
 		echo '../public/doc_xls_export/report_personalia_sasaran.xlsx';
 
 	}
+
 }

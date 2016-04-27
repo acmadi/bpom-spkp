@@ -187,7 +187,9 @@ class Spkp_abroad_trip extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_kegiatan_luar_negeri_file.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_kegiatan_luar_negeri_file.xlsx';
+		
     }
     
     function download($id=0){

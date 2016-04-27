@@ -137,7 +137,9 @@ class Spkp_personalia_kerjasama_nas extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_kegiatan_kerjasama_nas.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+		echo '../public/doc_xls_export/report_kegiatan_kerjasama_nas.xlsx';
+
     }
     
     function add_upload($departemen){
@@ -295,7 +297,9 @@ class Spkp_personalia_kerjasama_nas extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_kegiatan_kerjasama_nas_file.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+		echo '../public/doc_xls_export/report_kegiatan_kerjasama_nas_file.xlsx';
+		
     }
     
     function download($id=0){

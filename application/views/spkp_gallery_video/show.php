@@ -1,7 +1,8 @@
 <script>
 	$(function(){
-       $("#bar_perpustakaan").click();
-	   $('button, submit, reset').jqxButton({ height: 22, theme: theme });
+        $("#bar_perpustakaan").addClass("active open");
+        $("#galeri_video").addClass("active");
+	    $('button, submit, reset').jqxButton({ height: 22, theme: theme });
 		$("input[name='param']").jqxInput({ theme: 'fresh', height: '22px', width: '300px' });
 	});
 	

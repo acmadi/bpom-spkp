@@ -45,7 +45,8 @@
 		});
 	}
 	$(function(){
-		$("#bar_informasidankajian").click();
+	    $("#bar_informasidankajian").addClass("active open");
+        $("#parameter_kategori").addClass("active");
 		$('#btn_tambah_kategori, #btn_hapus').jqxButton({ height: 25, theme: theme });
 		myFunction();
 		$('#btn_tambah_kategori').click(function(){

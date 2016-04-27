@@ -28,8 +28,10 @@ class Spkp_personalia_cuti_model extends CI_Model {
 				FROM_UNIXTIME(pegawai_kp4.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update, pegawai_kp4.*, app_users_list.username
 				FROM pegawai_kp4 
 				INNER JOIN app_users_list ON app_users_list.id=pegawai_kp4.uploader WHERE (pegawai_kp4.uid=".$this->session->userdata("id")." || pegawai_kp4.uploader=".$this->session->userdata("id")." || pegawai_kp4.status=1) AND pegawai_kp4.uid=".$id;
-		$data = $this->crud->jqxGrid($query);
-		return ($data);
+		// $data = $this->crud->jqxGrid($query);
+		// return ($data);
+        return $this->crud->jqxGrid($query);
+		
 	}
 
     function get_user($id){

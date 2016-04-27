@@ -186,7 +186,7 @@
 			$.ajax({ 
 				type: "POST",
 				data: datastring+'&filterscount='+k,
-				url: "<?php echo base_url();?>spkp_personalia_kp4/excel",
+				url: "<?php echo base_url();?>spkp_personalia_kp4/excel/"+id,
 				success: function(response){
 					//Download excel file response
 					window.open("<?php echo base_url();?>spkp_loader/"+response);

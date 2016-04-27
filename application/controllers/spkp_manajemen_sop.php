@@ -179,7 +179,9 @@ class Spkp_manajemen_sop extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_manajemen_mutu_sop_file.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+		echo '../public/doc_xls_export/report_manajemen_mutu_sop_file.xlsx';
+		
     }
     
     function download($id=0){

@@ -6,7 +6,8 @@
 <script>
 //<![CDATA[
 $(document).ready(function(){
-	$("#bar_perpustakaan").click();
+	$("#bar_perpustakaan").addClass("active open");
+    $("#galeri_video").addClass("active");
 	$('button, submit, reset').jqxButton({ height: 22, theme: theme });
 		$("input[name='param']").jqxInput({ theme: 'fresh', height: '22px', width: '300px' });
 	$("#jquery_jplayer_1").jPlayer({

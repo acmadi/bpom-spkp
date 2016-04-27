@@ -130,7 +130,9 @@ class Spkp_pjas_laporan extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_pjas_laporan.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_pjas_laporan.xlsx';
+		
     }
     
     function add_upload($thn){

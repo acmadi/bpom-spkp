@@ -142,7 +142,7 @@
 			$.ajax({ 
 				type: "POST",
 				data: datastring+'&filterscount='+i,
-				url: "<?php echo base_url();?>spkp_personalia_sasaran/excel",
+				url: "<?php echo base_url();?>spkp_personalia_sasaran/excel/"+id,
 				success: function(response){
 					//Download excel file response
 					window.open("<?php echo base_url();?>spkp_loader/"+response);

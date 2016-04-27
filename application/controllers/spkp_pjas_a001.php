@@ -208,7 +208,9 @@ class Spkp_pjas_a001 extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_spkp_pjas_program_a001.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_spkp_pjas_program_a001.xlsx';
+
     }
     
     function word_kegiatan($propinsi,$thn){
@@ -247,7 +249,9 @@ class Spkp_pjas_a001 extends CI_Controller {
      	$TBS->MergeBlock('main', $main);
 		$output_file_name = $path.'export/report_spkp_pjas_kegiatan_a001.docx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_spkp_pjas_kegiatan_a001.docx';
+        
     }
     
     

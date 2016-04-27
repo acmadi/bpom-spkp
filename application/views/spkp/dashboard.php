@@ -1,6 +1,6 @@
 <script>
 	$(function(){
-       $("#bar_{pagetab}").click();
+       $("#bar_{pagetab}").addClass("active open");
 	});
 </script>
 <?php

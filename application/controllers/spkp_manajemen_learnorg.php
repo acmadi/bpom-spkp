@@ -188,7 +188,9 @@ class Spkp_manajemen_learnorg extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_spkp_manajemen_learnorg.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_spkp_manajemen_learnorg.xlsx';
+		
     }
     
     function download($id=0){

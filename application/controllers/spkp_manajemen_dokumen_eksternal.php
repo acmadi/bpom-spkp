@@ -135,7 +135,9 @@ class Spkp_manajemen_dokumen_eksternal extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_qms_manajemen_dokumen_eksternal.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_qms_manajemen_dokumen_eksternal.xlsx';
+        
     }
 }
 ?>

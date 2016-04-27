@@ -130,7 +130,9 @@ class Spkp_counseling_subdit extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_kegiatan_subdit_penyuluhan.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_kegiatan_subdit_penyuluhan.xlsx';
+
     }
     
     function add_upload($thn){
@@ -287,7 +289,8 @@ class Spkp_counseling_subdit extends CI_Controller {
 		$TBS->MergeBlock('data', $rows);
 		$output_file_name = $path.'export/report_kegiatan_subdit_penyuluhan_file.xlsx';
 		$TBS->Show(OPENTBS_FILE, $output_file_name);
-		echo $output_file_name;
+		// echo $output_file_name;
+        echo '../public/doc_xls_export/report_kegiatan_subdit_penyuluhan_file.xlsx';
     }
     
     function download($id=0){

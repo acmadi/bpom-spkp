@@ -121,10 +121,10 @@ class Spkp_personalia_cuti extends CI_Controller {
 		$this->parser->parse("spkp_personalia_cuti/html",$data);
 	}
     
-    function excel($id){
+    function excel(){
 		$this->authentication->verify('spkp_personalia_cuti','show');
 
-		$data = $this->spkp_personalia_cuti_model->json_sasaran($id);
+		$data = $this->spkp_personalia_cuti_model->json_cutibersama();
 
 		$rows = $data[0]['Rows'];
 		$data['title'] = "KP4 Pegawai";

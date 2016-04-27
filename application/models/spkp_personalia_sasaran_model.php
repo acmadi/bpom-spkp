@@ -14,17 +14,22 @@ class Spkp_personalia_sasaran_model extends CI_Model {
                   desa, badan_tinggi, badan_berat, badan_rambut, badan_muka, badan_kulit, badan_khas, 
                   badan_cacat, kegemaran, image FROM app_users_profile WHERE status=1 ORDER BY id asc";
         
-        return $this->crud->jqxGrid($query);
+        $data = $this->crud->jqxGrid($query);
+		return ($data);
+
     }
     
 	function json_sasaran($id){
-		$query="SELECT @i:=@i+1 AS urut,FROM_UNIXTIME(pegawai_sasaran.id,'%Y/%m/%d %T') AS waktu,IF(pegawai_sasaran.update>1, 
-				FROM_UNIXTIME(pegawai_sasaran.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update, pegawai_sasaran.*, app_users_list.username
-				FROM pegawai_sasaran 
-				INNER JOIN app_users_list ON app_users_list.id=pegawai_sasaran.uploader WHERE (pegawai_sasaran.uid=".$this->session->userdata("id")." || pegawai_sasaran.uploader=".$this->session->userdata("id")." || pegawai_sasaran.status=1) AND pegawai_sasaran.uid=".$id;
+		$query="SELECT @i:=@i+1 AS urut,FROM_UNIXTIME(pegawai_sasaran.id,'%Y/%m/%d %T') AS waktu,
+				IF(pegawai_sasaran.update>1,FROM_UNIXTIME(pegawai_sasaran.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update,
+				pegawai_sasaran.*, app_users_list.username FROM pegawai_sasaran 
+				INNER JOIN app_users_list ON app_users_list.id=pegawai_sasaran.uploader 
+				WHERE (pegawai_sasaran.uid=".$this->session->userdata("id")." || pegawai_sasaran.uploader=".$this->session->userdata("id")." || pegawai_sasaran.status=1) AND pegawai_sasaran.uid=".$id;
+		
 		$data = $this->crud->jqxGrid($query);
 		return ($data);
 	}
+
 
     function get_user($id){
         $query = $this->db->get_where($this->tabel, array('id'=>$id),1);

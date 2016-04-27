@@ -196,7 +196,7 @@ class Spkp_personalia_dp3 extends CI_Controller {
 		$this->parser->parse("spkp_personalia_dp3/html",$data);
 	}
     
-    function excel($id){
+    function excel($id=""){
 		$this->authentication->verify('spkp_personalia_dp3','show');
 
 		$data = $this->spkp_personalia_dp3_model->json_sasaran($id);

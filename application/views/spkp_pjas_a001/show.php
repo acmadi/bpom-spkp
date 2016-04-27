@@ -1,6 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#bar_datapjas").click();
+        $("#bar_datapjas").addClass("active open");
+        $("#data_pjas").addClass("active");
         $('#jqxTabs').jqxTabs({ width: '100%', height: '500', position: 'top', theme: theme });
     });
 </script>
