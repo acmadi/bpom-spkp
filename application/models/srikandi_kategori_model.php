@@ -85,6 +85,15 @@ class Srikandi_kategori_model extends CI_Model {
 		}
 		else return false;
     }
+    function checdatajoin($id_kategori=0){
+		$options['id_kategori'] = $id_kategori;
+		$this->db->where($options);
+		$query = $this->db->get('srikandi');
+		if ($query->num_rows() > 0){
+			return 1;
+		}
+		else return 0;
+    }
 
 	function update_sub($position,$sub_id,$data)
     {

@@ -19,7 +19,9 @@ class Srikandi_model extends CI_Model {
                 WHERE a.status=1 ";
 
                 if($this->session->userdata('searchsubdit')!=""){
+                    if($this->session->userdata('searchsubdit')!="0"){
                     $query .= " AND a.id_subdit='".$this->session->userdata('searchsubdit')."' ";
+                    }
                 }
         
                 $query .= " GROUP BY a.id_srikandi_ref ORDER BY srikandi_log.status ASC,a.update DESC";
@@ -238,6 +240,28 @@ class Srikandi_model extends CI_Model {
     function delete_upload($id){
         $this->db->where('id_srikandi',$id);
         return $this->db->delete('srikandi');
+    }
+    function cekdata($id,$user){
+        $this->db->where('id_srikandi',$id);
+        $this->db->where('app_users_list.username',$user);
+        $this->db->join('app_users_list',"srikandi.uploader = app_users_list.id");
+        $query = $this->db->get('srikandi');
+        if ($query->num_rows() > 0) {
+            return '1';
+        }else{
+            return '0';
+        }
+    }
+    function cekdatakomen($id,$user){
+        $this->db->where('id_comment',$id);
+        $this->db->where('app_users_list.username',$user);
+        $this->db->join('app_users_list',"srikandi_comment.uploader = app_users_list.id");
+        $query = $this->db->get('srikandi_comment');
+        if ($query->num_rows() > 0) {
+            return '1';
+        }else{
+            return '0';
+        }
     }
 
     function delete_ref($id){

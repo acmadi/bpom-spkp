@@ -1,5 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
+    	$("#bar_informasidankajian").addClass("active open");
+        $("#list_kajian").addClass("active");
 	   $("#bar_informasidankajian").click();
 
        $("textarea").jqxInput({  height: '100px', width: '95%'});
@@ -22,17 +24,26 @@
 	    $('#btn_hapus').click(function(){
 			var values = new Array();	
 			var	data = "";
+			var user = "<?php echo $this->session->userdata('username');?>";
 			$.each($("input[name='kajian[]']:checked"), function() {
-			  values.push($(this).val());		
+			  values.push($(this).val());
+			  //alert(values);
 			});
-			
 			if(values.length > 0){
-				if(confirm('Hapus '+ values.length +' data kajian?')){
-					$.post("<?php echo base_url().'srikandi/dodel_rev'; ?>", {data: values} ,  function(res) {
-						alert(res);
-	   					timeline_file();
-					});
-				}
+				$.post("<?php echo base_url().'srikandi/cekdata'; ?>", {data: values,username:user} ,  function(response) {
+				//	alert(response);
+					if (response==1) {
+						//alert(response);
+						if(confirm('Hapus '+ values.length +' data kajian?')){
+							$.post("<?php echo base_url().'srikandi/dodel_rev'; ?>", {data: values} ,  function(res) {
+								alert(res);
+			   					timeline_file();
+							});
+						}
+					}else{
+						alert('Maaf data ini hanya bisa di hapus oleh '+user);
+					}
+				});
 			}else{
 				alert('Silahkan Pilih Kajian Terlebih Dahulu');
 			}

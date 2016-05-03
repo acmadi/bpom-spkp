@@ -246,7 +246,22 @@ class Srikandi extends CI_Controller {
 
 		die(count($ids).' data berhasil dihapus');
     }
-    
+    function cekdata()
+    {
+    	$ids = $this->input->post('data');
+    	$user = $this->input->post('username');
+    	foreach ($ids as $id) {
+			$sip = $this->srikandi_model->cekdata($id,$user);
+		}
+		die($sip);
+    }
+    function cekdatakomen()
+    {
+    	$user = $this->session->userdata('username');
+    	$ids = $this->input->post('data');
+		$sip = $this->srikandi_model->cekdatakomen($ids,$user);
+		die($sip);
+    }
     function dodel_rev(){
         $this->authentication->verify('srikandi','del');
         

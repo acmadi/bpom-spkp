@@ -1,7 +1,8 @@
+
 <script>
 	$(function(){
 	   $("#bar_informasidankajian").addClass("active open");
-       $("#list_kajian").addClass("active");
+       $("#list_kajian").addClass("active open");
 	   $('#btn_tambah_upload, #btn_hapus, #clearfilteringbutton_upload, #refreshdatabutton_upload, #printbutton_upload, #excelbutton_upload').jqxButton({ height: 25, theme: theme });
 	   
 	   var source = {
