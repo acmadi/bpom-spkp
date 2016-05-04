@@ -15,6 +15,7 @@
             { name: 'uploader', type: 'number' },
 			{ name: 'username', type: 'string' },
 			{ name: 'judul', type: 'string' },
+			{ name: 'iduploadterakhir', type: 'string' },
 			{ name: 'prioritas', type: 'string' },			            
             { name: 'deskripsi', type: 'string' },
             { name: 'kategori', type: 'string' },
@@ -76,10 +77,10 @@
 			columns: [
 				{ text: '#', align: 'center', filtertype: 'none', sortable: false, width: '7%', cellsrenderer: function (row) {
 				     var dataRecord = $("#jqxgrid_upload").jqxGrid('getrowdata', row);
-					 if({add_permission}==true || dataRecord.uploader=='<?php echo $this->session->userdata('id')?>'){
+					 if({add_permission}==true && dataRecord.iduploadterakhir=="<?php echo $this->session->userdata('id')?>"){
 						return "<div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);' title='Detail'><img border=0 src='<?php echo base_url(); ?>media/images/16_view.gif' onclick='detail("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Edit'><img border=0 src='<?php echo base_url(); ?>public/images/edt.gif' onclick='edit_upload("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Download'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
 					 }else{
-						return "<div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
+						return "<div style='width:100%;padding-top:2px;text-align:center'><div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);' title='Detail'><img border=0 src='<?php echo base_url(); ?>media/images/16_view.gif' onclick='detail("+dataRecord.id_file+");'></a> <a href='javascript:void(0);'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
 					 }
                  }
                 },
@@ -162,17 +163,25 @@
 	    $('#btn_hapus').click(function(){
 			var values = new Array();	
 			var	data = "";
+			var user = "<?php echo $this->session->userdata('username');?>";
 			$.each($("input[name='kajian[]']:checked"), function() {
 			  values.push($(this).val());		
 			});
 			
 			if(values.length > 0){
-				if(confirm('Hapus '+ values.length +' data kajian?')){
-					$.post("<?php echo base_url().'srikandi/dodel'; ?>", {data: values} ,  function(res) {
-						$("#jqxgrid_upload").jqxGrid('updatebounddata', 'cells');
-						alert(res);
-					});
+				$.post("<?php echo base_url().'srikandi/cekdata'; ?>", {data: values,username:user} ,  function(response) {
+				//	alert(response);
+				if (response==1) {	
+					if(confirm('Hapus '+ values.length +' data kajian?')){
+						$.post("<?php echo base_url().'srikandi/dodel'; ?>", {data: values} ,  function(res) {
+							$("#jqxgrid_upload").jqxGrid('updatebounddata', 'cells');
+							alert(res);
+						});
+					}
+				}else{
+						alert('Maaf data ini tidak bisa dihapus');
 				}
+				});
 			}else{
 				alert('Silahkan Pilih Kajian Terlebih Dahulu');
 			}

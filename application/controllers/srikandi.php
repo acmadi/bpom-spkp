@@ -16,6 +16,7 @@ class Srikandi extends CI_Controller {
         
         $data = array();
         $data['title'] = "Informasi dan Kajian";
+        $data['idlogin'] =  $this->srikandi_model->get_data_id($this->session->userdata('username'));
         $data['subdit'] = $subdit!="" ? $subdit : 0;
         $data['option_subdit'] =  $this->srikandi_model->getSubdit($subdit);
         
@@ -25,7 +26,10 @@ class Srikandi extends CI_Controller {
 
 		$this->template->show($data,"home");
     }
-
+    function cekkomen($id=""){
+    	$jumlah = $this->srikandi_model->get_commentjml($id);
+    	die(($jumlah));
+    }
     function detail($id=""){
         $this->authentication->verify('srikandi','show');
         
@@ -177,6 +181,7 @@ class Srikandi extends CI_Controller {
 
 		$data = $this->srikandi_model->get_data_row($id);
 		$data['action']="edit";
+		$data['namauploader']=$this->srikandi_model->get_data_nama($data['uploader']);
 		$data['option_subdit']=$this->crud->option_subdit($data['id_subdit'],'style="height:25px;padding:2px;margin: 0;width:92%"');
 
 		echo $this->parser->parse("srikandi/form",$data,true);
@@ -252,8 +257,12 @@ class Srikandi extends CI_Controller {
     	$user = $this->input->post('username');
     	foreach ($ids as $id) {
 			$sip = $this->srikandi_model->cekdata($id,$user);
+			if($sip == 0){
+				die($sip);
+			}else{
+				die($sip);
+			}
 		}
-		die($sip);
     }
     function cekdatakomen()
     {

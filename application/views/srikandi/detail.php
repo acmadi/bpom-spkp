@@ -41,7 +41,7 @@
 							});
 						}
 					}else{
-						alert('Maaf data ini hanya bisa di hapus oleh '+user);
+						alert('Maaf data ini tidak bisa dihapus');
 					}
 				});
 			}else{
@@ -67,6 +67,15 @@
 	function timeline_comment(){
 		$.get("<?php echo base_url();?>srikandi/timeline_comment/{id_srikandi}" , function(response) {
 			$("#timeline-comment").html(response);
+			cekkomen();
+		});
+	}
+	function cekkomen(){
+		$.get("<?php echo base_url();?>srikandi/cekkomen/{id_srikandi}" , function(response) {
+			if (response!=0) {
+				$("#btn_hapus").hide();
+			}
+			
 		});
 	}
 </script>
@@ -129,7 +138,13 @@ Upload oleh : <?php echo $detail_upload['username']?>, <?php echo date("d-m-Y H:
 ?>
 <p align="right">
 	<a href="#" id="btn_tambah_upload" data-toggle="modal"><button class="btn btn-success" type="button"><i class="icon-upload"></i> Upload File Revisi </button></a>
-	<button class="btn btn-danger" type="button" id="btn_hapus"><i class="icon-trash"></i> Hapus  </button>
+	<?php 
+		//if (count($data_commentjml) == 0) {
+	?>
+	<button class="btn btn-danger" type="button" id="btn_hapus"><i class="icon-trash"></i> Hapus</button>
+	<?php
+	//}
+	?>
 	<a href="<?php echo base_url();?>srikandi"><button class="btn btn-warning" type="button"><i class="icon-circle-arrow-left"></i> Kembali  </button></a>
 </p>
 

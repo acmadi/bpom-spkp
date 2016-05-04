@@ -128,7 +128,11 @@
 <div id="uploadloader" style='display:none;text-align:center'><br><br><br><img src='<?php echo base_url();?>media/images/indicator.gif' alt='loading content.. '><br>uploading<br><br><br><br></div>
 <div id="uploaddiv" style="padding:5px;text-align:center">
 <form method="POST" id="frmData">
-	<?php if($action=="edit"){ ?><button type="button" class="btn btn-default" name="btn_delete"><i class="icon-remove"></i> Delete Data </button> - <?php } ?>
+	<?php if(($action=="edit") && (($uploader==$this->session->userdata('id')) || ($this->session->userdata('id')=='1'))){ 
+
+	?>
+	<button type="button" class="btn btn-default" name="btn_delete"><i class="icon-remove"></i> Delete Data </button> - 
+	<?php } echo $namauploader['username']; ?>
 	<button type="button" class="btn btn-default" name="btn_simpan"><i class="icon-plus"></i> Simpan </button>
 	<button type="reset"class="btn btn-default" ><i class="icon-repeat"></i> Ulang </button>
 	<button type="button" onCLick="close_dialog_upload();"class="btn btn-default" > <i class="icon-minus-sign"></i>Batal </button>

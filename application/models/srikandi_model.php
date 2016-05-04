@@ -8,6 +8,7 @@ class Srikandi_model extends CI_Model {
     
     function json_judul(){
         $query = "SELECT @i:=@i+1 AS urut,IF(a.update>1,FROM_UNIXTIME(a.update,'%Y/%m/%d %T'), 'NULL') AS waktu_update,
+                (select s.uploader from srikandi s where s.id_srikandi=a.id_srikandi_ref limit 1) as iduploadterakhir,
                 a.id_srikandi_ref AS id_file, a.judul, a.deskripsi, a.prioritas, a.uploader, a.update, a.filename, a.ip, b.username , c.nama AS kategori,
                 (SELECT COUNT(*) FROM srikandi_comment WHERE id_srikandi = a.id_srikandi_ref) AS jumlahkomen,
                 (SELECT COUNT(*) FROM srikandi WHERE id_srikandi_ref = a.id_srikandi_ref) AS jumlahrevisi,
@@ -47,7 +48,19 @@ class Srikandi_model extends CI_Model {
             return false;
         }
     }
+    function get_commentjml($id)
+    {
+        $this->db->where('id_srikandi',$id);
+        $this->db->select("count(*) as jml");
+        $this->db->join('app_users_profile', "srikandi_comment.uploader = app_users_profile.id",'inner');
+        $this->db->order_by('id_comment','desc');
+        $query = $this->db->get('srikandi_comment');
+        $data = $query->result(); 
 
+        foreach ($data as $key) {
+            return $key->jml;
+        }
+    }
     function get_comment($id){
         
         $this->db->where('id_srikandi',$id);
@@ -59,7 +72,20 @@ class Srikandi_model extends CI_Model {
 
         return $data;
     }
+    
 
+    function get_data_nama($id){
+        $this->db->where('id',$id);
+        $this->db->select("username");
+        $query = $this->db->get('app_users_list',1);
+        $data = $query->row_array(); 
+    }
+    function get_data_id($id){
+        $this->db->where('username',"$id");
+        $this->db->select("id");
+        $query = $this->db->get('app_users_list',1);
+        $data = $query->row_array(); 
+    }
     function get_data_row($id){
         $this->db->where('id_srikandi',$id);
         $this->db->select("srikandi.*,mas_subdit.ket as nama_subdit,mas_srikandi_kategori.nama as kategori,mas_srikandi_kategori.id_kategori_parent");
@@ -265,7 +291,7 @@ class Srikandi_model extends CI_Model {
     }
 
     function delete_ref($id){
-        $this->db->where('id_srikandi_ref',$id);
+        $this->db->where('id_srikandi',$id);
         return $this->db->delete('srikandi');
     }
 
