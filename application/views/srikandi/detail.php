@@ -67,7 +67,7 @@
 	function timeline_comment(){
 		$.get("<?php echo base_url();?>srikandi/timeline_comment/{id_srikandi}" , function(response) {
 			$("#timeline-comment").html(response);
-			cekkomen();
+			//cekkomen();
 		});
 	}
 	function cekkomen(){
