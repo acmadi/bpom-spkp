@@ -77,7 +77,7 @@
 			columns: [
 				{ text: '#', align: 'center', filtertype: 'none', sortable: false, width: '7%', cellsrenderer: function (row) {
 				     var dataRecord = $("#jqxgrid_upload").jqxGrid('getrowdata', row);
-					 if({add_permission}==true && dataRecord.iduploadterakhir=="<?php echo $this->session->userdata('id')?>"){
+					 if({add_permission}==true && ((dataRecord.iduploadterakhir=="<?php echo $this->session->userdata('id')?>")||("<?php echo $this->session->userdata('id')?>"=="1"))){
 						return "<div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);' title='Detail'><img border=0 src='<?php echo base_url(); ?>media/images/16_view.gif' onclick='detail("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Edit'><img border=0 src='<?php echo base_url(); ?>public/images/edt.gif' onclick='edit_upload("+dataRecord.id_file+");'></a> <a href='javascript:void(0);' title='Download'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";
 					 }else{
 						return "<div style='width:100%;padding-top:2px;text-align:center'><div style='width:100%;padding-top:2px;text-align:center'><a href='javascript:void(0);' title='Detail'><img border=0 src='<?php echo base_url(); ?>media/images/16_view.gif' onclick='detail("+dataRecord.id_file+");'></a> <a href='javascript:void(0);'><img border=0 src='<?php echo base_url(); ?>public/images/download.gif' onclick='download("+dataRecord.id_file+");'></a></div>";

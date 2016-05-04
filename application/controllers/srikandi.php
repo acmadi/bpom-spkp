@@ -19,7 +19,7 @@ class Srikandi extends CI_Controller {
         $data['idlogin'] =  $this->srikandi_model->get_data_id($this->session->userdata('username'));
         $data['subdit'] = $subdit!="" ? $subdit : 0;
         $data['option_subdit'] =  $this->srikandi_model->getSubdit($subdit);
-        $data['namauploader']=$this->srikandi_model->get_data_nama($data['uploader']);
+        
 		$data['add_permission']=$this->authentication->verify_check('srikandi','add');
         $data['form'] = $this->parser->parse("srikandi/form",$data,true);
         $data['content'] = $this->parser->parse("srikandi/show",$data,true);
@@ -119,7 +119,7 @@ class Srikandi extends CI_Controller {
         $this->authentication->verify('srikandi','add');
 		$data['action']="add";
 		$data['option_subdit']=$this->crud->option_subdit('','style="height:25px;padding:2px;margin: 0;width:92%"');
-		$data['namauploader']=$this->srikandi_model->get_data_nama($data['uploader']);
+		//$data['namauploader']=$this->srikandi_model->get_data_nama($data['uploader']);
 		echo $this->parser->parse("srikandi/form",$data,true);
     }
     function delete_komentar($id=0){
@@ -181,7 +181,7 @@ class Srikandi extends CI_Controller {
 
 		$data = $this->srikandi_model->get_data_row($id);
 		$data['action']="edit";
-		$data['namauploader']=$this->srikandi_model->get_data_nama($data['uploader']);
+		//$data['namauploader']=$this->srikandi_model->get_data_nama($data['uploader']);
 		$data['option_subdit']=$this->crud->option_subdit($data['id_subdit'],'style="height:25px;padding:2px;margin: 0;width:92%"');
 
 		echo $this->parser->parse("srikandi/form",$data,true);
